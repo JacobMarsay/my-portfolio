@@ -1,9 +1,13 @@
+import { Route, Routes } from "react-router";
+
+import Dashboard from "./pages/Dashboard";
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Test</h1>
-      </header>
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
