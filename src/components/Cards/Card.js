@@ -3,17 +3,17 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import CardPlaceHolderImg from "../../assets/placeholders/card-placeholder.png";
 
-const Card = () => {
+const Card = (props) => {
   return (
     <CardContainer>
-      <img src={CardPlaceHolderImg} alt="Dummy Image" />
+      <img src={props.image} alt="Dummy Image" />
       <CardContentContainer>
-        <div className="card__title">
-          <h3>Test Title Project</h3>
-        </div>
-        <div className="card__description">
-          <p>A short description that describes this project</p>
-        </div>
+        <CardTitleContainer>
+          <h3>{props.title}</h3>
+        </CardTitleContainer>
+        <CardDescriptionContainer>
+          <p>{props.description}</p>
+        </CardDescriptionContainer>
       </CardContentContainer>
     </CardContainer>
   );
@@ -41,3 +41,6 @@ const CardContentContainer = styled.div`
   flex-direction: column;
   padding: 2.5rem;
 `;
+
+const CardTitleContainer = styled.div``;
+const CardDescriptionContainer = styled.div``;
