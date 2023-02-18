@@ -2,18 +2,21 @@ import { React } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import CardPlaceHolderImg from "../../assets/placeholders/card-placeholder.png";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
   return (
     <CardContainer>
       <img src={props.image} alt="Dummy Image" />
       <CardContentContainer>
-        <CardTitleContainer>
-          <h3>{props.title}</h3>
-        </CardTitleContainer>
-        <CardDescriptionContainer>
-          <p>{props.description}</p>
-        </CardDescriptionContainer>
+        <Link to={`/projects/${props.title}/${props.id}`}>
+          <CardTitleContainer>
+            <h3>{props.title}</h3>
+          </CardTitleContainer>
+          <CardDescriptionContainer>
+            <p>{props.description}</p>
+          </CardDescriptionContainer>
+        </Link>
       </CardContentContainer>
     </CardContainer>
   );
