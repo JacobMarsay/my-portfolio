@@ -22,6 +22,7 @@ const Dashboard = () => {
           {projectInfo.map((project) => (
             <Card
               key={project.id}
+              id={project.id}
               image={project.image.CardPlaceHolderImg}
               title={project.title}
               description={project.description}
