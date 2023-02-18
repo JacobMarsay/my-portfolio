@@ -8,7 +8,10 @@ import Card from "../components/Cards/Card";
 //import global styles
 import { PageContainer, PageContentContainer } from "../styles/Pages";
 
+import { ProjectData } from "../util/project-util";
+
 const Dashboard = () => {
+  const projectInfo = ProjectData();
   return (
     <PageContainer>
       <PageContentContainer>
@@ -16,12 +19,14 @@ const Dashboard = () => {
           <h1>Dashboard</h1>
         </div>
         <CardsContainer>
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {projectInfo.map((project) => (
+            <Card
+              key={project.id}
+              image={project.image.CardPlaceHolderImg}
+              title={project.title}
+              description={project.description}
+            />
+          ))}
         </CardsContainer>
       </PageContentContainer>
     </PageContainer>
