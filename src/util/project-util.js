@@ -25,14 +25,15 @@ export const ProjectData = () => {
     {
       id: 4,
       title: "Expenses App",
-      description: "A basic application that lets you track your expenses.",
+      description:
+        "A basic application that lets you track your expenses. Results are shown in a graph which updates when new entrys have been entered.",
       image: { CardPlaceHolderImg },
     },
     {
       id: 5,
       title: "Shopping Website",
       description:
-        "An application that allows you to manage shopping carts and calculates the total cost.",
+        "An application that allows you to manage shopping carts and calculates the total cost of all basket items.",
       image: { CardPlaceHolderImg },
     },
   ];
