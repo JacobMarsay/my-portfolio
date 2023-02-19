@@ -1,23 +1,22 @@
 import { React } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import CardPlaceHolderImg from "../../assets/placeholders/card-placeholder.png";
 import { Link } from "react-router-dom";
 
 const Card = (props) => {
   return (
     <CardContainer>
-      <img src={props.image} alt="Dummy Image" />
-      <CardContentContainer>
-        <Link to={`/projects/${props.title}/${props.id}`}>
+      <Link to={`/projects/${props.title}/${props.id}`}>
+        <img src={props.image} alt="Dummy Image" />
+        <CardContentContainer>
           <CardTitleContainer>
             <h3>{props.title}</h3>
           </CardTitleContainer>
           <CardDescriptionContainer>
             <p>{props.description}</p>
           </CardDescriptionContainer>
-        </Link>
-      </CardContentContainer>
+        </CardContentContainer>
+      </Link>
     </CardContainer>
   );
 };
@@ -34,6 +33,11 @@ const CardContainer = styled.div`
   width: 30%;
   margin: 2rem;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
   :hover {
     cursor: pointer;
   }
