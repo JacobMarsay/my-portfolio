@@ -1,11 +1,19 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
+import Nav from "./components/Nav";
+import Song from "./components/Song";
+import Player from "./components/Player";
+import Library from "./components/Library";
+
 const MusicApp = () => {
   const { id } = useParams();
   return (
-    <div className="test">
-      <h1>Hello {id}</h1>
+    <div className="App">
+      <Nav />
+      <Song />
+      <Player />
+      <Library />
     </div>
   );
 };
