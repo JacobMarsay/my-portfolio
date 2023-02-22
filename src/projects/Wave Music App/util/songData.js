@@ -1,4 +1,4 @@
-function chillHop() {
+function songData() {
   return [
     {
       name: "Blessed",
@@ -148,4 +148,4 @@ function chillHop() {
   ];
 }
 
-export default chillHop;
+export default songData;
