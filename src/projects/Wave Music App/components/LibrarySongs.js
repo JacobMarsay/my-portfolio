@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { useSelector } from "react-redux";
 const LibrarySongs = () => {
   const songs = useSelector((state) => state.player.songs);
@@ -8,16 +9,37 @@ const LibrarySongs = () => {
   return (
     <div>
       {songs.map((song) => (
-        <div onClick={songSelectHandler}>
+        <LibrarySongContainer onClick={songSelectHandler}>
           <img alt={song.name} src={song.cover}></img>
-          <div className="song__description">
+          <SongDescriptionContainer>
             <h3>{song.name}</h3>
             <h4>{song.artist}</h4>
-          </div>
-        </div>
+          </SongDescriptionContainer>
+        </LibrarySongContainer>
       ))}
     </div>
   );
 };
 
 export default LibrarySongs;
+
+const LibrarySongContainer = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem 1rem 2rem;
+  cursor: pointer;
+  img {
+    width: 40%;
+  }
+  &:hover {
+    background: $accentColour;
+  }
+`;
+
+const SongDescriptionContainer = styled.div`
+  padding-left: 1rem;
+  h3,
+  h4 {
+    color: $textColour;
+  }
+`;
