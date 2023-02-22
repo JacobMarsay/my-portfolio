@@ -31,6 +31,10 @@ const LibraryContainer = styled.div`
     transition: all 0.5s ease;
     opacity: 0;
     background: rgb(66, 66, 66);
+    h2 {
+      padding: 3rem 2rem;
+      color: rgb(17, 17, 17);
+    }
   }
   &.active__library {
     transform: translateX(0%);
@@ -38,15 +42,4 @@ const LibraryContainer = styled.div`
   }
 `;
 
-const LibrarySongsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 1rem 2rem 1rem 2rem;
-  cursor: pointer;
-  img {
-    width: 40%;
-  }
-  &:hover {
-    background: $accentColour;
-  }
-`;
+const LibrarySongsContainer = styled.div``;

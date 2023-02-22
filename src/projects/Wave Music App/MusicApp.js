@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
+import "./global-styles/global.scss";
 import Nav from "./components/Nav";
 import Song from "./components/Song";
 import Player from "./components/Player";
