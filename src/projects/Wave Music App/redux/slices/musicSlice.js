@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import songData from "../../util/songData";
 
+const songsList = songData();
+
 const initialState = {
-  songs: songData(),
-  currentSong: null,
+  songs: songsList,
+  currentSong: songsList[0],
   isPlaying: false,
   currentTime: 0,
   duration: 0,
@@ -15,7 +17,9 @@ export const playerSlice = createSlice({
   name: "player",
   initialState,
   reducers: {
-    activeSong: (state) => {},
+    activeSong: (state) => {
+      console.log(state.currentSong);
+    },
     playlist: (state) => {},
     songInfo: (state) => {},
     musiclibrary: (state) => {},
