@@ -22,7 +22,12 @@ const SongContainer = styled.div`
   min-height: 60vh;
   width: 100%;
   // Uses predefined variables to postion flex items (See 'stles/abstracts/mixins.scss')
-
+  img {
+    margin-top: 2rem;
+    width: 20%;
+    border-radius: 50%;
+    animation: rotation 15s infinite linear;
+  }
   h2 {
     padding: 3rem 1rem 1rem 1rem;
     color: rgb(190, 190, 190);

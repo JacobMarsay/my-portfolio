@@ -32,7 +32,12 @@ const LibrarySongContainer = styled.div`
     width: 40%;
   }
   &:hover {
-    background: $accentColour;
+    background: rgb(121, 121, 121);
+    border: 0.3rem solid #50b050;
+    h3,
+    h4 {
+      color: #50b050;
+    }
   }
 `;
 
@@ -40,6 +45,6 @@ const SongDescriptionContainer = styled.div`
   padding-left: 1rem;
   h3,
   h4 {
-    color: $textColour;
+    color: rgb(190, 190, 190);
   }
 `;
