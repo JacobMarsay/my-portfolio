@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
 import { songStatus } from "../redux/slices/musicSlice";
@@ -49,25 +50,25 @@ const Player = (audioRef) => {
   const songEndHandler = async () => {};
 
   return (
-    <div className="player">
-      <div className="time__control">
+    <PlayerContainer>
+      <TimeControlContainer>
         <p>current time</p>
-        <div>
+        <TrackContainer>
           <input />
-          <div className="animate__track"></div>
-        </div>
+          <AnimatedTrackContainer />
+        </TrackContainer>
         <p>song Duration</p>
-      </div>
-      <div className="play__control">
-        <FontAwesomeIcon />
+      </TimeControlContainer>
+      <PlayControlContainer>
+        <FontAwesomeIcon size="3x" icon={faAngleLeft} />
         <FontAwesomeIcon
           onClick={playSongHandler}
           className="play"
           size="4x"
           icon={isPlaying ? faPauseCircle : faPlayCircle}
         />
-        <FontAwesomeIcon />
-      </div>
+        <FontAwesomeIcon size="3x" icon={faAngleRight} />
+      </PlayControlContainer>
       {/* <audio
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler} // Get time duration of song on load
@@ -75,8 +76,87 @@ const Player = (audioRef) => {
         src={currentSong.audio}
         onEnded={songEndHandler}
       ></audio> */}
-    </div>
+    </PlayerContainer>
   );
 };
 
 export default Player;
+
+const PlayerContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  min-height: 20vh;
+`;
+
+const TimeControlContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 50%;
+  P {
+    padding: 1rem;
+    color: rgb(190, 190, 190);
+  }
+  input {
+    width: 100%;
+    padding: 1rem 0rem;
+    -webkit-appearance: none; // Removes all styles from the input slider bar
+    background-color: transparent;
+    cursor: pointer;
+    input[type="range"]::-webkit-slider-thumb {
+      // Google and edge
+      -webkit-appearance: none;
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+
+    input[type="range"]::-moz-range-thumb {
+      // Firefox
+      -webkit-appearance: none;
+      height: 1.6rem;
+      width: 1.6rem;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+`;
+
+const TrackContainer = styled.div`
+  width: 100%;
+  height: 1rem;
+  background: lightblue;
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+`;
+
+const PlayControlContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 30%;
+  svg {
+    cursor: pointer;
+    color: rgb(134, 134, 134);
+  }
+  @media screen and (max-width: 768px) {
+    width: 50%;
+  }
+`;
+
+const AnimatedTrackContainer = styled.div`
+  /* background: rgb(204, 204, 204);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(0%);
+  pointer-events: none;
+  z-index: -1; */
+`;

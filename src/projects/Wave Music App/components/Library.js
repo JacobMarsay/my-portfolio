@@ -25,7 +25,7 @@ const LibraryContainer = styled.div`
     left: 0;
     width: 30rem;
     height: 100%;
-    box-shadow: $boxShadow;
+    box-shadow: 2px 2px 50px rgb(42, 42, 42);
     overflow: scroll;
     transform: translateX(-100%);
     transition: all 0.5s ease;
@@ -33,7 +33,7 @@ const LibraryContainer = styled.div`
     background: rgb(66, 66, 66);
     h2 {
       padding: 3rem 2rem;
-      color: rgb(17, 17, 17);
+      color: rgb(190, 190, 190);
     }
   }
   &.active__library {
