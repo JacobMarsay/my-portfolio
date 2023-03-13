@@ -2,29 +2,33 @@ import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-import { songStatus } from "../redux/slices/musicSlice";
+import { songStatus, setSongInfo } from "../redux/slices/musicSlice";
 import {
   faPlayCircle,
   faAngleLeft,
   faAngleRight,
   faPauseCircle,
 } from "@fortawesome/free-solid-svg-icons";
-const Player = (audioRef) => {
+const Player = ({ audioRef }) => {
   const dispatch = useDispatch();
   const isPlaying = useSelector((state) => state.player.isPlaying);
-  console.log(isPlaying);
+  const currentSong = useSelector((state) => state.player.currentSong);
+  const songInfo = useSelector((state) => state.player.songInfo);
+
   // Event Handlers
-  function playSongHandler() {
+  const playSongHandler = () => {
     if (isPlaying) {
-      // audioRef.current.play();
+      audioRef.current.play();
+      console.log(audioRef.current);
       dispatch(songStatus());
     } else {
-      // audioRef.current.pause();
+      audioRef.current.pause();
+      console.log(console.log(audioRef.current));
       dispatch(songStatus());
     }
-  }
+  };
 
-  function timeUpdateHandler(e) {
+  const timeUpdateHandler = (e) => {
     // Event handler that targets the current time and duration
     const current = e.target.currentTime;
     const duration = e.target.duration;
@@ -33,7 +37,15 @@ const Player = (audioRef) => {
     const animationPercentage = Math.round(
       (roundedCurrent / roundedDuration) * 100 // Divides the current time by the duration, then * by 100 to get the percentage of the current time into the song
     );
-  }
+    dispatch(
+      setSongInfo({
+        ...songInfo,
+        currentTime: current,
+        duration: duration,
+        animationPercentage: animationPercentage,
+      })
+    );
+  };
 
   function getTime(time) {
     return (
@@ -52,12 +64,12 @@ const Player = (audioRef) => {
   return (
     <PlayerContainer>
       <TimeControlContainer>
-        <p>current time</p>
+        <p>{getTime(songInfo.currentTime)}</p>
         <TrackContainer>
           <input />
           <AnimatedTrackContainer />
         </TrackContainer>
-        <p>song Duration</p>
+        <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
       </TimeControlContainer>
       <PlayControlContainer>
         <FontAwesomeIcon size="3x" icon={faAngleLeft} />
@@ -69,13 +81,13 @@ const Player = (audioRef) => {
         />
         <FontAwesomeIcon size="3x" icon={faAngleRight} />
       </PlayControlContainer>
-      {/* <audio
+      <audio
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler} // Get time duration of song on load
         ref={audioRef}
         src={currentSong.audio}
         onEnded={songEndHandler}
-      ></audio> */}
+      ></audio>
     </PlayerContainer>
   );
 };

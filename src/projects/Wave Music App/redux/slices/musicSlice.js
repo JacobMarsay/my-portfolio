@@ -7,9 +7,11 @@ const initialState = {
   songs: songsList,
   currentSong: songsList[0],
   isPlaying: false,
-  currentTime: 0,
-  duration: 0,
-  animationPercentage: 0,
+  songInfo: {
+    currentTime: 0,
+    duration: 0,
+    animationPercentage: 0,
+  },
   libraryStatus: false,
 };
 
@@ -21,7 +23,12 @@ export const playerSlice = createSlice({
       console.log(state.currentSong);
     },
     playlist: (state) => {},
-    songInfo: (state) => {},
+    setSongInfo: (state, action) => {
+      state.songInfo = {
+        ...state.songInfo,
+        ...action.payload,
+      };
+    },
     musiclibrary: (state) => {},
     songStatus: (state) => {
       state.isPlaying = !state.isPlaying;
@@ -33,6 +40,6 @@ export const playerSlice = createSlice({
   },
 });
 
-export const { toggleLibrary, songStatus } = playerSlice.actions;
+export const { toggleLibrary, songStatus, setSongInfo } = playerSlice.actions;
 
 export default playerSlice.reducer;
