@@ -9,7 +9,7 @@ const LibrarySongs = () => {
   return (
     <div>
       {songs.map((song) => (
-        <LibrarySongContainer onClick={songSelectHandler}>
+        <LibrarySongContainer key={song.id} onClick={songSelectHandler}>
           <img alt={song.name} src={song.cover}></img>
           <SongDescriptionContainer>
             <h3>{song.name}</h3>
