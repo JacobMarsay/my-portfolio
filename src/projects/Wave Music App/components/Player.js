@@ -8,6 +8,7 @@ import {
   setSongInfo,
   skipTrackForward,
   skipTrackBackward,
+  songEnded,
 } from "../redux/slices/musicSlice";
 import {
   faPlayCircle,
@@ -60,7 +61,7 @@ const Player = ({ audioRef }) => {
 
   function dragInputBarHandler(e) {
     audioRef.current.currentTime = e.target.value; // Sets current time to the value the slider has been dragged to
-    setSongInfo({ ...songInfo, currentTime: e.target.value }); // Sets the start time to the value which the input slider has been dragged to
+    dispatch(setSongInfo({ ...songInfo, currentTime: e.target.value })); // Sets the start time to the value which the input slider has been dragged to
   }
 
   function getTime(time) {
@@ -77,6 +78,7 @@ const Player = ({ audioRef }) => {
     if (direction === "skip__forward") {
       await dispatch(skipTrackForward());
       activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
+      audioRef.current.play();
     }
 
     if (direction === "skip__back") {
@@ -87,32 +89,30 @@ const Player = ({ audioRef }) => {
       }
       await dispatch(skipTrackBackward());
       activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
+      audioRef.current.play();
     }
-
-    if (isPlaying) audioRef.current.play();
   };
 
   const songEndHandler = async () => {
-    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
-    await dispatch(songs[(currentIndex + 1) % songs.length]);
-
-    if (isPlaying) {
-      setTimeout(() => {
-        audioRef.current.play(); // Code to run 0.1 seconds
-      }, 100);
-    }
+    await dispatch(songEnded());
+    audioRef.current.play();
   };
 
   return (
     <PlayerContainer>
       <TimeControlContainer>
         <p>{getTime(songInfo.currentTime)}</p>
-        <TrackContainer>
+        <TrackContainer
+          style={{
+            background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
+          }}
+        >
           <input
             onChange={dragInputBarHandler}
             min={0} // Start from 0
             max={songInfo.duration || 0} // End on the song duration
             value={songInfo.currentTime} //Move across on the current time
+            type="range"
           />
           <AnimatedTrackContainer style={trackAnim} />
         </TrackContainer>
@@ -219,7 +219,7 @@ const PlayControlContainer = styled.div`
 `;
 
 const AnimatedTrackContainer = styled.div`
-  /* background: rgb(204, 204, 204);
+  background: rgb(204, 204, 204);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -227,5 +227,5 @@ const AnimatedTrackContainer = styled.div`
   left: 0;
   transform: translateX(0%);
   pointer-events: none;
-  z-index: -1; */
+  z-index: -1;
 `;
