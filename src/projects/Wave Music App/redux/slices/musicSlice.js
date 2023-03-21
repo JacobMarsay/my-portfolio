@@ -54,6 +54,23 @@ export const playerSlice = createSlice({
       }
       state.currentSong = state.songs[currentIndex];
     },
+    songEnded: (state, action) => {
+      let currentIndex = state.songs.findIndex(
+        (song) => song.id === state.currentSong.id
+      );
+      const nextSong = state.songs[(currentIndex + 1) % state.songs.length];
+
+      if (state.isPlaying) {
+        setTimeout(() => {
+          action.audioRef.current.play(); // Code to run 0.1 seconds
+        }, 100);
+      }
+
+      return {
+        ...state,
+        currentSong: nextSong,
+      };
+    },
   },
 });
 
@@ -63,6 +80,7 @@ export const {
   setSongInfo,
   skipTrackForward,
   skipTrackBackward,
+  songEnded,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;
