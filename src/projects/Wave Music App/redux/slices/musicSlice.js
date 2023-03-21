@@ -37,9 +37,32 @@ export const playerSlice = createSlice({
     toggleLibrary: (state) => {
       state.libraryStatus = !state.libraryStatus;
     },
+    skipTrackForward: (state) => {
+      let currentIndex = state.songs.findIndex(
+        (song) => song.id === state.currentSong.id
+      );
+      state.currentSong = state.songs[(currentIndex + 1) % state.songs.length];
+    },
+    skipTrackBackward: (state) => {
+      let currentIndex = state.songs.findIndex(
+        (song) => song.id === state.currentSong.id
+      );
+      if ((currentIndex - 1) % state.songs.length === -1) {
+        currentIndex = state.songs.length - 1;
+      } else {
+        currentIndex = (currentIndex - 1) % state.songs.length;
+      }
+      state.currentSong = state.songs[currentIndex];
+    },
   },
 });
 
-export const { toggleLibrary, songStatus, setSongInfo } = playerSlice.actions;
+export const {
+  toggleLibrary,
+  songStatus,
+  setSongInfo,
+  skipTrackForward,
+  skipTrackBackward,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;

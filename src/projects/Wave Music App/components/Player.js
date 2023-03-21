@@ -1,8 +1,14 @@
 import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-import { songStatus, setSongInfo } from "../redux/slices/musicSlice";
+import {
+  songStatus,
+  setSongInfo,
+  skipTrackForward,
+  skipTrackBackward,
+} from "../redux/slices/musicSlice";
 import {
   faPlayCircle,
   faAngleLeft,
@@ -14,6 +20,7 @@ const Player = ({ audioRef }) => {
   const isPlaying = useSelector((state) => state.player.isPlaying);
   const currentSong = useSelector((state) => state.player.currentSong);
   const songInfo = useSelector((state) => state.player.songInfo);
+  const songs = useSelector((state) => state.player.songs);
 
   // Event Handlers
   const playSongHandler = () => {
@@ -47,39 +54,89 @@ const Player = ({ audioRef }) => {
     );
   };
 
+  const trackAnim = {
+    transform: `translateX(${songInfo.animationPercentage}%)`,
+  };
+
+  function dragInputBarHandler(e) {
+    audioRef.current.currentTime = e.target.value; // Sets current time to the value the slider has been dragged to
+    setSongInfo({ ...songInfo, currentTime: e.target.value }); // Sets the start time to the value which the input slider has been dragged to
+  }
+
   function getTime(time) {
     return (
       Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2) // Formatting the digital time
     );
   }
 
-  function dragInputBarHandler(e) {}
-
   function activeLibraryHandler(nextPrev) {}
 
-  const skipTrackHandler = async (direction) => {};
+  const skipTrackHandler = async (direction) => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
 
-  const songEndHandler = async () => {};
+    if (direction === "skip__forward") {
+      await dispatch(skipTrackForward());
+      activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
+    }
+
+    if (direction === "skip__back") {
+      if ((currentIndex - 1) % songs.length === -1) {
+        activeLibraryHandler(songs[songs.length - 1]);
+        if (isPlaying) audioRef.current.play();
+        return;
+      }
+      await dispatch(skipTrackBackward());
+      activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
+    }
+
+    if (isPlaying) audioRef.current.play();
+  };
+
+  const songEndHandler = async () => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
+    await dispatch(songs[(currentIndex + 1) % songs.length]);
+
+    if (isPlaying) {
+      setTimeout(() => {
+        audioRef.current.play(); // Code to run 0.1 seconds
+      }, 100);
+    }
+  };
 
   return (
     <PlayerContainer>
       <TimeControlContainer>
         <p>{getTime(songInfo.currentTime)}</p>
         <TrackContainer>
-          <input />
-          <AnimatedTrackContainer />
+          <input
+            onChange={dragInputBarHandler}
+            min={0} // Start from 0
+            max={songInfo.duration || 0} // End on the song duration
+            value={songInfo.currentTime} //Move across on the current time
+          />
+          <AnimatedTrackContainer style={trackAnim} />
         </TrackContainer>
         <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
       </TimeControlContainer>
       <PlayControlContainer>
-        <FontAwesomeIcon size="3x" icon={faAngleLeft} />
+        <FontAwesomeIcon
+          size="3x"
+          icon={faAngleLeft}
+          className="skip__back"
+          onClick={() => skipTrackHandler("skip__back")}
+        />
         <FontAwesomeIcon
           onClick={playSongHandler}
           className="play"
           size="4x"
           icon={isPlaying ? faPauseCircle : faPlayCircle}
         />
-        <FontAwesomeIcon size="3x" icon={faAngleRight} />
+        <FontAwesomeIcon
+          size="3x"
+          icon={faAngleRight}
+          className="skip__forward"
+          onClick={() => skipTrackHandler("skip__forward")}
+        />
       </PlayControlContainer>
       <audio
         onTimeUpdate={timeUpdateHandler}
