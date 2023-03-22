@@ -13,7 +13,7 @@ import {
 
 // Framer motion
 import { motion } from "framer-motion";
-import { animImage, slideContainer, fadeIn } from "../animations";
+import { animImage, slideContainer, fadeIn } from "../../../anims/animations";
 
 // Import Router DOM
 

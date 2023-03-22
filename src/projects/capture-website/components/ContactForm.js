@@ -1,5 +1,5 @@
 import React from "react";
-import { scaleSection } from "../animations";
+import { scaleSection } from "../../../anims/animations";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 

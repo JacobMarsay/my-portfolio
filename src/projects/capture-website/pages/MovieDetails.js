@@ -6,7 +6,7 @@ import Gallery from "../components/Gallery";
 import styled from "styled-components";
 // Import motion animations
 import { motion } from "framer-motion";
-import { lineAnim } from "../animations";
+import { lineAnim } from "../../../anims/animations";
 import { useLocation } from "react-router-dom";
 import { MovieState } from "../movieState";
 
