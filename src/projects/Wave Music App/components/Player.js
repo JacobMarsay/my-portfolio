@@ -175,20 +175,34 @@ const TimeControlContainer = styled.div`
     -webkit-appearance: none; // Removes all styles from the input slider bar
     background-color: transparent;
     cursor: pointer;
-    input[type="range"]::-webkit-slider-thumb {
-      // Google and edge
-      -webkit-appearance: none;
-      height: 1.6rem;
-      width: 1.6rem;
-    }
-
-    input[type="range"]::-moz-range-thumb {
-      // Firefox
-      -webkit-appearance: none;
-      height: 1.6rem;
-      width: 1.6rem;
-    }
   }
+
+  input[type="range"]::-webkit-slider-thumb {
+    // Google and edge
+    -webkit-appearance: none;
+    height: 2.2rem;
+    width: 2.2rem;
+    background-color: #ffffffe4;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -1.5rem;
+    left: 0rem;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    // Firefox
+    -webkit-appearance: none;
+    height: 2.2rem;
+    width: 2.2rem;
+    background-color: #ffffffe4;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -1.5rem;
+    left: 0rem;
+  }
+
   @media screen and (max-width: 768px) {
     width: 80%;
   }
@@ -200,7 +214,7 @@ const TrackContainer = styled.div`
   background: lightblue;
   position: relative;
   border-radius: 1rem;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 const PlayControlContainer = styled.div`
@@ -219,7 +233,6 @@ const PlayControlContainer = styled.div`
 `;
 
 const AnimatedTrackContainer = styled.div`
-  background: rgb(204, 204, 204);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -227,5 +240,4 @@ const AnimatedTrackContainer = styled.div`
   left: 0;
   transform: translateX(0%);
   pointer-events: none;
-  z-index: -1;
 `;
