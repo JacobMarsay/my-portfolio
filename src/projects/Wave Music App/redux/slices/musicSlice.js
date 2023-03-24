@@ -7,9 +7,11 @@ const initialState = {
   songs: songsList,
   currentSong: songsList[0],
   isPlaying: false,
-  currentTime: 0,
-  duration: 0,
-  animationPercentage: 0,
+  songInfo: {
+    currentTime: 0,
+    duration: 0,
+    animationPercentage: 0,
+  },
   libraryStatus: false,
 };
 
@@ -20,8 +22,18 @@ export const playerSlice = createSlice({
     activeSong: (state) => {
       console.log(state.currentSong);
     },
+
+    activeLibrary: (state, action) => {
+      state.currentSong = action.payload.currentSong;
+    },
+
     playlist: (state) => {},
-    songInfo: (state) => {},
+    setSongInfo: (state, action) => {
+      state.songInfo = {
+        ...state.songInfo,
+        ...action.payload,
+      };
+    },
     musiclibrary: (state) => {},
     songStatus: (state) => {
       state.isPlaying = !state.isPlaying;
@@ -30,9 +42,51 @@ export const playerSlice = createSlice({
     toggleLibrary: (state) => {
       state.libraryStatus = !state.libraryStatus;
     },
+    skipTrackForward: (state) => {
+      let currentIndex = state.songs.findIndex(
+        (song) => song.id === state.currentSong.id
+      );
+      state.currentSong = state.songs[(currentIndex + 1) % state.songs.length];
+    },
+    skipTrackBackward: (state) => {
+      let currentIndex = state.songs.findIndex(
+        (song) => song.id === state.currentSong.id
+      );
+      if ((currentIndex - 1) % state.songs.length === -1) {
+        currentIndex = state.songs.length - 1;
+      } else {
+        currentIndex = (currentIndex - 1) % state.songs.length;
+      }
+      state.currentSong = state.songs[currentIndex];
+    },
+    songEnded: (state, action) => {
+      let currentIndex = state.songs.findIndex(
+        (song) => song.id === state.currentSong.id
+      );
+      const nextSong = state.songs[(currentIndex + 1) % state.songs.length];
+
+      if (state.isPlaying && action.audioRef?.current) {
+        setTimeout(() => {
+          action.audioRef.current.play();
+        }, 100);
+      }
+
+      return {
+        ...state,
+        currentSong: nextSong,
+      };
+    },
   },
 });
 
-export const { toggleLibrary, songStatus } = playerSlice.actions;
+export const {
+  toggleLibrary,
+  songStatus,
+  setSongInfo,
+  skipTrackForward,
+  skipTrackBackward,
+  songEnded,
+  activeLibrary,
+} = playerSlice.actions;
 
 export default playerSlice.reducer;

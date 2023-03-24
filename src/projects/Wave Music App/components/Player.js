@@ -1,30 +1,44 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-import { songStatus } from "../redux/slices/musicSlice";
+import {
+  songStatus,
+  setSongInfo,
+  skipTrackForward,
+  skipTrackBackward,
+  songEnded,
+  activeLibrary,
+} from "../redux/slices/musicSlice";
 import {
   faPlayCircle,
   faAngleLeft,
   faAngleRight,
   faPauseCircle,
 } from "@fortawesome/free-solid-svg-icons";
-const Player = (audioRef) => {
+const Player = ({ audioRef }) => {
   const dispatch = useDispatch();
   const isPlaying = useSelector((state) => state.player.isPlaying);
-  console.log(isPlaying);
+  const currentSong = useSelector((state) => state.player.currentSong);
+  const songInfo = useSelector((state) => state.player.songInfo);
+  const songs = useSelector((state) => state.player.songs);
+
+  useEffect(() => {
+    console.log(isPlaying);
+  }, [isPlaying]);
   // Event Handlers
-  function playSongHandler() {
+  const playSongHandler = () => {
     if (isPlaying) {
-      // audioRef.current.play();
+      audioRef.current.pause();
       dispatch(songStatus());
     } else {
-      // audioRef.current.pause();
+      audioRef.current.play();
       dispatch(songStatus());
     }
-  }
+  };
 
-  function timeUpdateHandler(e) {
+  const timeUpdateHandler = (e) => {
     // Event handler that targets the current time and duration
     const current = e.target.currentTime;
     const duration = e.target.duration;
@@ -33,6 +47,23 @@ const Player = (audioRef) => {
     const animationPercentage = Math.round(
       (roundedCurrent / roundedDuration) * 100 // Divides the current time by the duration, then * by 100 to get the percentage of the current time into the song
     );
+    dispatch(
+      setSongInfo({
+        ...songInfo,
+        currentTime: current,
+        duration: duration,
+        animationPercentage: animationPercentage,
+      })
+    );
+  };
+
+  const trackAnim = {
+    transform: `translateX(${songInfo.animationPercentage}%)`,
+  };
+
+  function dragInputBarHandler(e) {
+    audioRef.current.currentTime = e.target.value; // Sets current time to the value the slider has been dragged to
+    dispatch(setSongInfo({ ...songInfo, currentTime: e.target.value })); // Sets the start time to the value which the input slider has been dragged to
   }
 
   function getTime(time) {
@@ -41,41 +72,83 @@ const Player = (audioRef) => {
     );
   }
 
-  function dragInputBarHandler(e) {}
+  const activeLibraryHandler = (nextPrev) => {
+    dispatch(activeLibrary({ currentSong: nextPrev }));
+  };
 
-  function activeLibraryHandler(nextPrev) {}
+  const skipTrackHandler = async (direction) => {
+    let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
 
-  const skipTrackHandler = async (direction) => {};
+    if (direction === "skip__forward") {
+      await dispatch(skipTrackForward());
+      activeLibraryHandler(songs[(currentIndex + 1) % songs.length]);
+      audioRef.current.play();
+    }
 
-  const songEndHandler = async () => {};
+    if (direction === "skip__back") {
+      if ((currentIndex - 1) % songs.length === -1) {
+        activeLibraryHandler(songs[songs.length - 1]);
+        if (isPlaying) audioRef.current.play();
+        return;
+      }
+      await dispatch(skipTrackBackward());
+      activeLibraryHandler(songs[(currentIndex - 1) % songs.length]);
+      audioRef.current.play();
+    }
+  };
+
+  const songEndHandler = async () => {
+    await dispatch(songEnded());
+    audioRef.current.play();
+  };
 
   return (
     <PlayerContainer>
       <TimeControlContainer>
-        <p>current time</p>
-        <TrackContainer>
-          <input />
-          <AnimatedTrackContainer />
+        <p>{getTime(songInfo.currentTime)}</p>
+        <TrackContainer
+          style={{
+            background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
+          }}
+        >
+          <input
+            onChange={dragInputBarHandler}
+            min={0} // Start from 0
+            max={songInfo.duration || 0} // End on the song duration
+            value={songInfo.currentTime} //Move across on the current time
+            type="range"
+          />
+          <AnimatedTrackContainer style={trackAnim} />
         </TrackContainer>
-        <p>song Duration</p>
+        <p>{songInfo.duration ? getTime(songInfo.duration) : "0:00"}</p>
       </TimeControlContainer>
       <PlayControlContainer>
-        <FontAwesomeIcon size="3x" icon={faAngleLeft} />
+        <FontAwesomeIcon
+          size="3x"
+          icon={faAngleLeft}
+          className="skip__back"
+          onClick={() => skipTrackHandler("skip__back")}
+        />
         <FontAwesomeIcon
           onClick={playSongHandler}
           className="play"
           size="4x"
           icon={isPlaying ? faPauseCircle : faPlayCircle}
         />
-        <FontAwesomeIcon size="3x" icon={faAngleRight} />
+        <FontAwesomeIcon
+          size="3x"
+          icon={faAngleRight}
+          className="skip__forward"
+          onClick={() => skipTrackHandler("skip__forward")}
+        />
       </PlayControlContainer>
-      {/* <audio
+      <audio
         onTimeUpdate={timeUpdateHandler}
         onLoadedMetadata={timeUpdateHandler} // Get time duration of song on load
         ref={audioRef}
         src={currentSong.audio}
         onEnded={songEndHandler}
-      ></audio> */}
+      ></audio>
     </PlayerContainer>
   );
 };
@@ -106,20 +179,34 @@ const TimeControlContainer = styled.div`
     -webkit-appearance: none; // Removes all styles from the input slider bar
     background-color: transparent;
     cursor: pointer;
-    input[type="range"]::-webkit-slider-thumb {
-      // Google and edge
-      -webkit-appearance: none;
-      height: 1.6rem;
-      width: 1.6rem;
-    }
-
-    input[type="range"]::-moz-range-thumb {
-      // Firefox
-      -webkit-appearance: none;
-      height: 1.6rem;
-      width: 1.6rem;
-    }
   }
+
+  input[type="range"]::-webkit-slider-thumb {
+    // Google and edge
+    -webkit-appearance: none;
+    height: 2.2rem;
+    width: 2.2rem;
+    background-color: #ffffffe4;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -1.5rem;
+    left: 0rem;
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    // Firefox
+    -webkit-appearance: none;
+    height: 2.2rem;
+    width: 2.2rem;
+    background-color: #ffffffe4;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    top: -1.5rem;
+    left: 0rem;
+  }
+
   @media screen and (max-width: 768px) {
     width: 80%;
   }
@@ -131,7 +218,6 @@ const TrackContainer = styled.div`
   background: lightblue;
   position: relative;
   border-radius: 1rem;
-  overflow: hidden;
 `;
 
 const PlayControlContainer = styled.div`
@@ -150,7 +236,6 @@ const PlayControlContainer = styled.div`
 `;
 
 const AnimatedTrackContainer = styled.div`
-  /* background: rgb(204, 204, 204);
   width: 100%;
   height: 100%;
   position: absolute;
@@ -158,5 +243,4 @@ const AnimatedTrackContainer = styled.div`
   left: 0;
   transform: translateX(0%);
   pointer-events: none;
-  z-index: -1; */
 `;

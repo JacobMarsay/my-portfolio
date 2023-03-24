@@ -1,21 +1,21 @@
 import React from "react";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
-
 import "./global-styles/global.scss";
 import Nav from "./components/Nav";
 import Song from "./components/Song";
 import Player from "./components/Player";
 import Library from "./components/Library";
+import { useRef } from "react";
 
 const MusicApp = () => {
-  const { id } = useParams();
+  const audioRef = useRef();
+
   return (
     <AppContainer>
       <Nav />
       <Song />
-      <Player />
-      <Library />
+      <Player audioRef={audioRef} />
+      <Library audioRef={audioRef} />
     </AppContainer>
   );
 };
