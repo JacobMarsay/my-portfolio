@@ -22,6 +22,11 @@ export const playerSlice = createSlice({
     activeSong: (state) => {
       console.log(state.currentSong);
     },
+
+    activeLibrary: (state, action) => {
+      state.currentSong = action.payload.currentSong;
+    },
+
     playlist: (state) => {},
     setSongInfo: (state, action) => {
       state.songInfo = {
@@ -60,9 +65,9 @@ export const playerSlice = createSlice({
       );
       const nextSong = state.songs[(currentIndex + 1) % state.songs.length];
 
-      if (state.isPlaying) {
+      if (state.isPlaying && action.audioRef?.current) {
         setTimeout(() => {
-          action.audioRef.current.play(); // Code to run 0.1 seconds
+          action.audioRef.current.play();
         }, 100);
       }
 
@@ -81,6 +86,7 @@ export const {
   skipTrackForward,
   skipTrackBackward,
   songEnded,
+  activeLibrary,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

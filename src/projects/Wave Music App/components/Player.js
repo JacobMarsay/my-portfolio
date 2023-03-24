@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,6 +9,7 @@ import {
   skipTrackForward,
   skipTrackBackward,
   songEnded,
+  activeLibrary,
 } from "../redux/slices/musicSlice";
 import {
   faPlayCircle,
@@ -23,15 +24,16 @@ const Player = ({ audioRef }) => {
   const songInfo = useSelector((state) => state.player.songInfo);
   const songs = useSelector((state) => state.player.songs);
 
+  useEffect(() => {
+    console.log(isPlaying);
+  }, [isPlaying]);
   // Event Handlers
   const playSongHandler = () => {
     if (isPlaying) {
-      audioRef.current.play();
-      console.log(audioRef.current);
+      audioRef.current.pause();
       dispatch(songStatus());
     } else {
-      audioRef.current.pause();
-      console.log(console.log(audioRef.current));
+      audioRef.current.play();
       dispatch(songStatus());
     }
   };
@@ -70,7 +72,9 @@ const Player = ({ audioRef }) => {
     );
   }
 
-  function activeLibraryHandler(nextPrev) {}
+  const activeLibraryHandler = (nextPrev) => {
+    dispatch(activeLibrary({ currentSong: nextPrev }));
+  };
 
   const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
@@ -214,7 +218,6 @@ const TrackContainer = styled.div`
   background: lightblue;
   position: relative;
   border-radius: 1rem;
-  /* overflow: hidden; */
 `;
 
 const PlayControlContainer = styled.div`
