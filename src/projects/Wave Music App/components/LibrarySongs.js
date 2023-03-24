@@ -1,15 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
-const LibrarySongs = () => {
+import { useSelector, useDispatch } from "react-redux";
+import { activeLibrary, activeSong } from "../redux/slices/musicSlice";
+
+const LibrarySongs = ({ audioRef }) => {
+  const dispatch = useDispatch();
+  const isPlaying = useSelector((state) => state.player.isPlaying);
+  const currentSong = useSelector((state) => state.player.currentSong);
+  const songInfo = useSelector((state) => state.player.songInfo);
   const songs = useSelector((state) => state.player.songs);
-  // Handlers
-  const songSelectHandler = async () => {};
+
+  const songSelectHandler = async (selectedSong) => {
+    dispatch(activeSong(selectedSong.id));
+    audioRef.current.play();
+  };
 
   return (
     <div>
       {songs.map((song) => (
-        <LibrarySongContainer key={song.id} onClick={songSelectHandler}>
+        <LibrarySongContainer
+          key={song.id}
+          onClick={() => songSelectHandler(song)}
+        >
           <img alt={song.name} src={song.cover}></img>
           <SongDescriptionContainer>
             <h3>{song.name}</h3>

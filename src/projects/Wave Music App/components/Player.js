@@ -17,9 +17,8 @@ import {
   faAngleRight,
   faPauseCircle,
 } from "@fortawesome/free-solid-svg-icons";
-const Player = ({ audioRef }) => {
+const Player = ({ audioRef, isPlaying }) => {
   const dispatch = useDispatch();
-  const isPlaying = useSelector((state) => state.player.isPlaying);
   const currentSong = useSelector((state) => state.player.currentSong);
   const songInfo = useSelector((state) => state.player.songInfo);
   const songs = useSelector((state) => state.player.songs);
@@ -72,9 +71,7 @@ const Player = ({ audioRef }) => {
     );
   }
 
-  const activeLibraryHandler = (nextPrev) => {
-    dispatch(activeLibrary({ currentSong: nextPrev }));
-  };
+  function activeLibraryHandler(nextPrev) {}
 
   const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex((song) => song.id === currentSong.id);
@@ -107,9 +104,11 @@ const Player = ({ audioRef }) => {
       <TimeControlContainer>
         <p>{getTime(songInfo.currentTime)}</p>
         <TrackContainer
-          style={{
-            background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
-          }}
+          style={
+            {
+              // background: `linear-gradient(to right, ${currentSong.color[0]}, ${currentSong.color[1]})`,
+            }
+          }
         >
           <input
             onChange={dragInputBarHandler}

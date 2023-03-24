@@ -19,13 +19,11 @@ export const playerSlice = createSlice({
   name: "player",
   initialState,
   reducers: {
-    activeSong: (state) => {
-      console.log(state.currentSong);
+    activeSong: (state, action) => {
+      state.currentSong = action.payload;
     },
 
-    activeLibrary: (state, action) => {
-      state.currentSong = action.payload.currentSong;
-    },
+    activeLibrary: (state, action) => {},
 
     playlist: (state) => {},
     setSongInfo: (state, action) => {
@@ -87,6 +85,7 @@ export const {
   skipTrackBackward,
   songEnded,
   activeLibrary,
+  activeSong,
 } = playerSlice.actions;
 
 export default playerSlice.reducer;

@@ -6,16 +6,18 @@ import Song from "./components/Song";
 import Player from "./components/Player";
 import Library from "./components/Library";
 import { useRef } from "react";
+import { useSelector } from "react-redux";
 
 const MusicApp = () => {
   const audioRef = useRef();
+  const isPlaying = useSelector((state) => state.player.isPlaying);
 
   return (
     <AppContainer>
       <Nav />
       <Song />
-      <Player audioRef={audioRef} />
-      <Library audioRef={audioRef} />
+      <Player audioRef={audioRef} isPlaying={isPlaying} />
+      <Library audioRef={audioRef} isPlaying={isPlaying} />
     </AppContainer>
   );
 };

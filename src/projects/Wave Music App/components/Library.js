@@ -4,14 +4,14 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 import LibrarySongs from "./LibrarySongs";
 
-const Library = () => {
+const Library = ({ audioRef }) => {
   const toggle = useSelector((state) => state.player.libraryStatus);
 
   return (
     <LibraryContainer className={`library ${toggle ? "active__library" : ""}`}>
       <h2>Library</h2>
       <LibrarySongsContainer>
-        <LibrarySongs />
+        <LibrarySongs audioRef={audioRef} />
       </LibrarySongsContainer>
     </LibraryContainer>
   );
