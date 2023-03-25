@@ -9,7 +9,7 @@ import styled from "styled-components";
 // Animate Motion Imports
 import { motion, AnimateSharedLayout } from "framer-motion";
 import { scaleSection } from "../../../anims/animations";
-import useScroll from "../components/useScroll";
+import useScroll from "../../../hooks/useScroll";
 
 function FaqSection() {
   const [element, controls] = useScroll();
