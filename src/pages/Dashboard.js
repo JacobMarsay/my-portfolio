@@ -1,16 +1,11 @@
 import { React, useState, useEffect } from "react";
 import styled from "styled-components";
-import { useRef } from "react";
 import { 
   motion, 
-  useAnimation,  
-  useSpring,
-  useTransform,
-  MotionValue,
-  useScroll,
+  useAnimation,
+  AnimateSharedLayout,
   useViewportScroll
 } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
 //Import components
 import Card from "../components/Cards/Card";
@@ -21,42 +16,25 @@ import TypedText from "../anims/TypedText";
 import CurvedLine from "../components/CurvedLine";
 
 //import global styles
-import { PageContainer, PageContentContainer } from "../styles/Pages";
-// import { useScroll } from "../hooks/scrollY";
+import { PageContainer, PageContentContainer, SectionHeadingContainer} from "../styles/global/Pages";
+import { ScrollyHeaderWrapper } from "../styles/sections/SideBySide";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectData } from "../util/project-util";
 import { faGithub , faLinkedin} from '@fortawesome/free-brands-svg-icons';
+import { scaleSection } from "../anims/animations";
+import useScroll from '../hooks/useScroll';
+import { useParallax } from "../hooks/useParallax";
+import AboutCta from "../components/AboutCta";
 
 const Dashboard = () => {
-  function useParallax(distance) {
-    const [offset, setOffset] = useState(0);
-  
-    useEffect(() => {
-      const handleScroll = () => {
-        const scrollPos = window.scrollY;
-        setOffset(-scrollPos * distance);
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-  
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
-    }, [distance]);
-  
-    return offset;
-  }
-  
-  
-  
+  const [element, controls] = useScroll();
+
+
+  const leftOffset = useParallax(0.2, "left");
+  const rightOffset = useParallax(0.1, "right");
   
   const projectInfo = ProjectData();
-  const { scrollY } = useViewportScroll();
   const heroAnimation = useAnimation();
-  // const [isHeadingInView, setIsHeadingInView] = useState(false);
-  // const ref = useRef(null);
-  // const { scrollXProgress } = useScroll({ target: ref });
-  const x = useParallax(0.2);
 
   const animateHero = async () => {
     await heroAnimation.start({
@@ -69,25 +47,6 @@ const Dashboard = () => {
   };
 
   animateHero();
-
-  // const { ref, inView } = useInView({
-  //   threshold: 0,
-  //   rootMargin: '0px 0px',
-  //   triggerOnce: false,
-  // });
-  // console.log(inView);
-  // useEffect(() => {
-  //   if (inView) {
-  //     setIsHeadingInView(true);
-  //   } else{
-  //     setIsHeadingInView(false);
-  //   }
-  // }, [inView]);
-
-  // function useParallax(value, distance) {
-  //   return useTransform(value, [0, 1], [-distance, distance]);
-  // }
-
   return (
     <PageContainer>
       <Nav />
@@ -116,20 +75,30 @@ const Dashboard = () => {
       </HeroContainer>
       <PageContentContainer>
         <SectionHeadingContainer>
-          <motion.span style={{x}}>01</motion.span>
-          <motion.h2 style={{x}}>My Projects</motion.h2>
+          <ScrollyHeaderWrapper style={{ right: rightOffset }} direction="right">
+            <motion.span>01</motion.span>
+            <motion.h2>My Projects</motion.h2>
+          </ScrollyHeaderWrapper>
         </SectionHeadingContainer>
-          <CardsContainer>
-            {projectInfo.map((project) => (
-              <Card
-                key={project.id}
-                id={project.id}
-                image={project.image.CardPlaceHolderImg}
-                title={project.title}
-                description={project.description}
-              />
-            ))}
+          <CardsContainer
+            variants={scaleSection}
+            animate={controls}
+            ref={element}
+            initial="hidden"
+          >
+            <AnimateSharedLayout>
+              {projectInfo.map((project) => (
+                <Card
+                  key={project.id}
+                  id={project.id}
+                  image={project.image.CardPlaceHolderImg}
+                  title={project.title}
+                  description={project.description}
+                />
+              ))}
+            </AnimateSharedLayout>
           </CardsContainer>
+        <AboutCta />
       </PageContentContainer>
     </PageContainer>
   );
@@ -137,13 +106,12 @@ const Dashboard = () => {
 
 export default Dashboard;
 
-export const CardsContainer = styled.div`
+export const CardsContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
 `;
-
 
 export const HeroContainer = styled(motion.div)`
   position: relative;
@@ -182,7 +150,7 @@ export const HeroIconsContainer = styled.div `
     display: flex;
     padding: 20px;
     gap: 20px;
-  
+
     .icon {
       position: relative;
       z-index: 3;
@@ -191,12 +159,10 @@ export const HeroIconsContainer = styled.div `
     }
   
     .github {
-      /* Position the GitHub icon on the left */
       left: 0;
     }
   
     .linkedin {
-      /* Position the LinkedIn icon next to the GitHub icon */
       left: 5px;
     }
 `
@@ -221,38 +187,5 @@ export const UnderlineContainer = styled.div `
   position: absolute;
   bottom: -400px;
   left: 0px;
-  svg {
-    z-index: 0;
-    path{
-      z-index: 0;
-    }
- 
-  }
 `
-
-export const SectionHeadingContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  padding: 8rem 0rem 8rem 21rem;
-  overflow: hidden; // Add this line
-  h2{
-    /* margin: auto; */
-    font-size: 15rem;
-    font-family: "Oswald";
-    transform: translateX(100%); // Add this line */
-    margin: -5rem 0rem -5rem 0rem
-  }
-  span{
-    font-size: 5rem;
-    font-family: "Oswald";
-    margin-left: -4.5rem;
-    padding: 0;
-    margin: -5rem 0rem 0rem 0rem
-
-
-  }
-`;
 
