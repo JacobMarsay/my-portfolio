@@ -5,7 +5,7 @@ export const ProjectData = () => {
       id: 1,
       title: "Wave Music App",
       description:
-        "Small music app with funky music! Contains the essential functionality for managing your playing songs.",
+        "Small music app with funky music! Contains the essential functionality for playing music.",
       image: { CardPlaceHolderImg },
     },
     {

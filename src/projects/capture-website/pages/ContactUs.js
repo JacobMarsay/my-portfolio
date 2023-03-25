@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { scaleSection } from "../animations";
+import { scaleSection } from "../../../anims/animations";
 import styled from "styled-components";
 import ContactForm from "../components/ContactForm";
 import Wave from "../components/Wave";

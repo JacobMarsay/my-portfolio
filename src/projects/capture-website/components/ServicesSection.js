@@ -13,7 +13,7 @@ import {
 
 //Framer Motion
 import { motion } from "framer-motion";
-import { fadeIn } from "../animations";
+import { fadeIn } from "../../../anims/animations";
 
 // Scroll effects
 import useScroll from "../components/useScroll";

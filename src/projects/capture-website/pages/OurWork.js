@@ -19,7 +19,7 @@ import {
   lineAnim,
   sliderAnimContainer,
   sliderAnim,
-} from "../animations";
+} from "../../../anims/animations";
 
 function OurWork() {
   return (
