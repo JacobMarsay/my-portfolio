@@ -28,7 +28,7 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { scaleSection } from "../anims/animations";
 import useScroll from "../hooks/useScroll";
 import { useParallax } from "../hooks/useParallax";
-import AboutCta from "../components/AboutCta";
+import AboutMeSection from "../components/AboutMeSection";
 
 const Dashboard = () => {
   const [element, controls] = useScroll();
@@ -71,6 +71,7 @@ const Dashboard = () => {
             </HeroHeadingContainer>
           </HeroOverlay>
         </HeroContainer>
+        <AboutMeSection />
         <SectionHeadingContainer>
           <ScrollyHeaderWrapper
             style={{ right: rightOffset }}
@@ -98,7 +99,6 @@ const Dashboard = () => {
             ))}
           </AnimateSharedLayout>
         </CardsContainer>
-        <AboutCta />
       </PageContentContainer>
     </PageContainer>
   );
@@ -109,9 +109,9 @@ export default Dashboard;
 export const CardsContainer = styled(motion.div)`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
-  width: 95%;
-  margin-left: 1.5rem;
+  width: 100%;
 `;
 
 export const HeroContainer = styled(motion.div)`

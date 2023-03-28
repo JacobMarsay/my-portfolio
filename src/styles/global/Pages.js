@@ -11,6 +11,7 @@ export const PageContainer = styled.div`
 export const PageContentContainer = styled.div`
   flex-grow: 1;
   margin-left: 15%;
+  overflow-x: hidden;
 `;
 
 export const SectionHeadingContainer = styled.div`
