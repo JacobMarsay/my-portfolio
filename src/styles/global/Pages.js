@@ -14,6 +14,8 @@ export const PageContentContainer = styled.div`
 
 export const SectionHeadingContainer = styled.div`
   position: relative;
+  display: flex;
+  justify-content: center;
   width: 100%;
   height: 40vh;
   overflow-x: hidden;
