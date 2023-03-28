@@ -52,25 +52,25 @@ const Dashboard = () => {
   return (
     <PageContainer>
       <Nav />
-      <HeroContainer>
-        <HeroImage heroImage={Hero} />
-        <HeroOverlay animate={heroAnimation}>
-          <HeroHeadingContainer>
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 2 }}
-            >
-              <TypedText text="A Fullstack Developer with Passion For Modern Web Apps and Design." />
-            </motion.h1>
-            <UnderlineContainer>
-              <CurvedLine />
-            </UnderlineContainer>
-          </HeroHeadingContainer>
-        </HeroOverlay>
-      </HeroContainer>
       <PageContentContainer>
+        <HeroContainer>
+          <HeroImage heroImage={Hero} />
+          <HeroOverlay animate={heroAnimation}>
+            <HeroHeadingContainer>
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 2 }}
+              >
+                <TypedText text="A Fullstack Developer with Passion For Modern Web Apps and Design." />
+              </motion.h1>
+              <UnderlineContainer>
+                <CurvedLine />
+              </UnderlineContainer>
+            </HeroHeadingContainer>
+          </HeroOverlay>
+        </HeroContainer>
         <SectionHeadingContainer>
           <ScrollyHeaderWrapper
             style={{ right: rightOffset }}
@@ -110,7 +110,8 @@ export const CardsContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  width: 100%;
+  width: 95%;
+  margin-left: 1.5rem;
 `;
 
 export const HeroContainer = styled(motion.div)`

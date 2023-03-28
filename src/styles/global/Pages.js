@@ -3,13 +3,14 @@ import { motion } from "framer-motion";
 
 export const PageContainer = styled.div`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  max-width: 100vw;
-  height: 100vh;
+  width: 100%;
 `;
 
 export const PageContentContainer = styled.div`
-  width: 100%;
+  flex-grow: 1;
+  margin-left: 15%;
 `;
 
 export const SectionHeadingContainer = styled.div`
