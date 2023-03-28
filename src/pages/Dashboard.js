@@ -33,7 +33,6 @@ import AboutCta from "../components/AboutCta";
 const Dashboard = () => {
   const [element, controls] = useScroll();
 
-  const leftOffset = useParallax(0.2, "left");
   const rightOffset = useParallax(0.1, "right");
 
   const projectInfo = ProjectData();
@@ -70,14 +69,6 @@ const Dashboard = () => {
             </UnderlineContainer>
           </HeroHeadingContainer>
         </HeroOverlay>
-        <HeroIconsContainer>
-          <FontAwesomeIcon icon={faGithub} size="5x" className="icon github" />
-          <FontAwesomeIcon
-            icon={faLinkedin}
-            size="5x"
-            className="icon linkedin"
-          />
-        </HeroIconsContainer>
       </HeroContainer>
       <PageContentContainer>
         <SectionHeadingContainer>
@@ -153,29 +144,6 @@ export const ScrollWrapper = styled(motion.div)`
   z-index: 1;
 `;
 
-export const HeroIconsContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 8%;
-  display: flex;
-  padding: 20px;
-  gap: 20px;
-
-  .icon {
-    position: relative;
-    z-index: 3;
-    color: white;
-    padding: 10px;
-  }
-
-  .github {
-    left: 0;
-  }
-
-  .linkedin {
-    left: 5px;
-  }
-`;
 export const HeroOverlay = styled(motion.div)`
   position: absolute;
   top: 0;
