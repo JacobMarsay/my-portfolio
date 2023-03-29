@@ -18,10 +18,10 @@ const NavMenu = () => {
       </ProfilePictureContainer>
       <MenuItemsContainer>
         <motion.ul>
-          <li>About Me</li>
-          <li>What I Do</li>
-          <li>Projects</li>
-          <li>Contact</li>
+          <li>01 About Me</li>
+          <li>02 What I Do</li>
+          <li>03 Projects</li>
+          <li>04 Contact</li>
         </motion.ul>
       </MenuItemsContainer>
       <SocialIconsContainer>
@@ -60,17 +60,17 @@ const MenuItemsContainer = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 30%;
+  width: 100%;
   ul {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     list-style: none;
 
     li {
-      padding: 1rem;
+      padding: 1.5rem;
       font-size: 2.5rem;
     }
   }
