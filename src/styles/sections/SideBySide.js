@@ -1,14 +1,19 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const SideBySideContainer = styled(motion.div)`
+export const SectionContainer = styled(motion.div)`
   display: flex;
   justify-content: space-evenly;
-  /* align-items: center; */
-  flex-direction: column;
+  align-items: center;
   width: 100%;
-  margin: 5rem 0;
   position: relative;
+  background: #212529;
+  flex-direction: column;
+  padding: 5rem 0rem;
+`;
+
+export const SectionContainerLight = styled(SectionContainer)`
+  background: #343a40;
 `;
 export const SideBySideContentContainer = styled(motion.div)`
   width: 100%;
@@ -24,7 +29,7 @@ export const ScrollyHeaderWrapper = styled(motion.div)`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  top: 0;
+  top: 1;
 
   h2 {
     font-size: 15rem;

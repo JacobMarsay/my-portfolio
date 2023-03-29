@@ -24,6 +24,7 @@ export const SectionHeadingContainer = styled.div`
   overflow-x: hidden;
   h3 {
     z-index: 3;
+    color: #d1d1d1;
   }
 `;
 export const ButtonLayoutElement = styled(motion.button)`
