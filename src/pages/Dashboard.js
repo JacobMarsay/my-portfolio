@@ -14,6 +14,7 @@ import Hero from "../assets/code-hero-image.jpg";
 import Nav from "../components/Nav/Nav";
 import TypedText from "../anims/TypedText";
 import CurvedLine from "../components/CurvedLine";
+import ServiceSection from "../components/ServicesSection";
 
 //import global styles
 import {
@@ -72,6 +73,7 @@ const Dashboard = () => {
           </HeroOverlay>
         </HeroContainer>
         <AboutMeSection />
+        <ServiceSection />
         <SectionHeadingContainer>
           <ScrollyHeaderWrapper
             style={{ right: rightOffset }}
