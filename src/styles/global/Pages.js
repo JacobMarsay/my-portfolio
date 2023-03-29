@@ -18,9 +18,13 @@ export const SectionHeadingContainer = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 40vh;
+  height: 30vh;
   overflow-x: hidden;
+  h3 {
+    z-index: 3;
+  }
 `;
 export const ButtonLayoutElement = styled(motion.button)`
   padding: 1.5rem 5rem;

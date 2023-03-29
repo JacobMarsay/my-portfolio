@@ -77,7 +77,7 @@ const Dashboard = () => {
             style={{ right: rightOffset }}
             direction="right"
           >
-            <motion.span>01</motion.span>
+            <motion.span>02</motion.span>
             <motion.h2>My Projects</motion.h2>
           </ScrollyHeaderWrapper>
         </SectionHeadingContainer>
