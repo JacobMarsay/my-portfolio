@@ -25,9 +25,9 @@ const NavMenu = () => {
         </motion.ul>
       </MenuItemsContainer>
       <SocialIconsContainer>
-        <FontAwesomeIcon icon={faGithub} size="5x" />
-        <FontAwesomeIcon icon={faEnvelope} size="5x" />
-        <FontAwesomeIcon icon={faLinkedin} size="5x" />
+        <FontAwesomeIcon icon={faGithub} size="4x" />
+        <FontAwesomeIcon icon={faEnvelope} size="4x" />
+        <FontAwesomeIcon icon={faLinkedin} size="4x" />
       </SocialIconsContainer>
     </NavMenuContainer>
   );
@@ -71,15 +71,17 @@ const MenuItemsContainer = styled(motion.div)`
 
     li {
       padding: 1rem;
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
   }
 `;
 
 export const ProfilePictureLogo = styled.div`
-  border-radius: 50rem;
-  width: 20rem;
-  height: 20rem;
+  border: solid 0.5rem grey;
+  border-radius: 100%;
+  width: 100%;
+  height: 50%;
+
   background-image: url(${AboutMe});
   background-size: cover;
   background-position: center, center;
