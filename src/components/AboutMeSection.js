@@ -9,10 +9,12 @@ import {
 } from "../styles/sections/SideBySide";
 import { useParallax } from "../hooks/useParallax";
 import useScroll from "../hooks/useScroll";
-import AboutMe from "../assets/jacob.jpg";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import { fadeIn } from "../anims/animations";
 import styled from "styled-components";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SocialIconsContainer } from "./Nav/NavMenu";
 
 const AboutButton = styled(ButtonLayoutElement)`
   margin: 0rem 4rem;
@@ -69,6 +71,10 @@ const AboutMeSection = () => {
                   <b>Location:</b> Bradford, West Yorkshire, England
                 </p>
               </InfoTableContainer>
+              <SocialIconsTableContainer>
+                <FontAwesomeIcon icon={faLinkedin} size="3x" />
+                <FontAwesomeIcon icon={faGithub} size="3x" />
+              </SocialIconsTableContainer>
             </InfoTableContainerWrapper>
           </CenteredSectionDescriptionWrapper>
         </SideBySideContentContainer>
@@ -109,4 +115,13 @@ export const InfoTableContainer = styled.div`
   justify-content: flex-start;
   border-bottom: solid #dee3e4;
   padding: 0.5rem 0rem;
+`;
+
+export const SocialIconsTableContainer = styled(SocialIconsContainer)`
+  justify-content: flex-start;
+  svg {
+    :nth-child(2) {
+      margin-left: 1rem;
+    }
+  }
 `;
