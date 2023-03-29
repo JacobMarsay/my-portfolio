@@ -14,7 +14,7 @@ const Nav = () => {
 
 const NavContainer = styled(motion.div)`
   width: 15%;
-  background: #303030;
+  background: #111418;
   position: fixed;
   left: 0;
   height: 100vh;

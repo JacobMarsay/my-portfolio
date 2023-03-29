@@ -3,7 +3,7 @@ import {
   ButtonLayoutElement,
 } from "../styles/global/Pages";
 import {
-  SideBySideContainer,
+  SectionContainer,
   SideBySideContentContainer,
   ScrollyHeaderWrapper,
 } from "../styles/sections/SideBySide";
@@ -16,14 +16,12 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SocialIconsContainer } from "./Nav/NavMenu";
 
-const AboutButton = styled(ButtonLayoutElement)`
-  margin: 0rem 4rem;
-`;
+
 const AboutMeSection = () => {
   const [element, controls] = useScroll();
   const leftOffset = useParallax(0.1, "left");
   return (
-    <SideBySideContainer
+    <SectionContainer
       variants={fadeIn}
       animate={controls}
       ref={element}
@@ -33,8 +31,8 @@ const AboutMeSection = () => {
         <SideBySideContentContainer>
           <SectionHeadingContainer>
             <ScrollyHeaderWrapper style={{ left: leftOffset }} direction="left">
-              <motion.span style={{ color: "#dee3e4" }}>01</motion.span>
-              <motion.h2 style={{ color: "#dee3e4" }}>About me</motion.h2>
+              <motion.span style={{ color: "#16191d" }}>01</motion.span>
+              <motion.h2 style={{ color: "#16191d" }}>About me</motion.h2>
             </ScrollyHeaderWrapper>
             <h3>Know Me More</h3>
           </SectionHeadingContainer>
@@ -79,7 +77,7 @@ const AboutMeSection = () => {
           </CenteredSectionDescriptionWrapper>
         </SideBySideContentContainer>
       </AnimateSharedLayout>
-    </SideBySideContainer>
+    </SectionContainer>
   );
 };
 
@@ -95,6 +93,10 @@ export const CenteredSectionDescription = styled.div`
     margin: 0rem 4rem;
     font-family: "Poppins";
     padding-bottom: 2rem;
+    color: #d1d1d1;
+  }
+  span {
+    color: #088f8f;
   }
 `;
 
@@ -108,13 +110,14 @@ export const CenteredSectionDescriptionWrapper = styled.div`
 export const InfoTableContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  color: #d1d1d1;
 `;
 
 export const InfoTableContainer = styled.div`
   display: flex;
   justify-content: flex-start;
-  border-bottom: solid #dee3e4;
-  padding: 0.5rem 0rem;
+  border-bottom: solid #16191d;
+  padding: 1rem 0rem;
 `;
 
 export const SocialIconsTableContainer = styled(SocialIconsContainer)`
