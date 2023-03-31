@@ -145,7 +145,7 @@ export const FlexCenterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50%;
+  width: 80%;
 `;
 
 export const FlexColumnContainer = styled.div`
