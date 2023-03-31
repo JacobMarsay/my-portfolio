@@ -81,7 +81,8 @@ export const ProfilePictureLogo = styled.div`
   border: solid 0.5rem grey;
   border-radius: 100%;
   width: 100%;
-  height: 50%;
+  height: 0;
+  padding-top: 100%; /* use the same value as the width to create a circular aspect ratio */
 
   background-image: url(${AboutMe});
   background-size: cover;
