@@ -7,9 +7,6 @@ import AboutMe from "../../assets/jacob.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavMenu = () => {
-  const scrollY = useScroll();
-  const scrollThreshold = window.innerHeight * 0.1; // 10% of the page height
-
   return (
     <NavMenuContainer>
       <ProfilePictureContainer>

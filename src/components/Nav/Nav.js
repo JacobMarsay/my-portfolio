@@ -20,6 +20,7 @@ const NavContainer = styled(motion.div)`
   height: 100vh;
   z-index: 2;
   overflow-x: hidden;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
 `;
 
 export default Nav;
