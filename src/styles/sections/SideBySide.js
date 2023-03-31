@@ -29,7 +29,7 @@ export const ScrollyHeaderWrapper = styled(motion.div)`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  top: 1;
+  top: 0;
 
   h2 {
     font-size: 15rem;
