@@ -22,6 +22,7 @@ export const SectionHeadingContainer = styled.div`
   width: 100%;
   height: 30vh;
   overflow-x: hidden;
+  overflow-y: hidden;
   h3 {
     z-index: 3;
     color: #d1d1d1;
