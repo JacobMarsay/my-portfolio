@@ -30,7 +30,6 @@ export const ScrollyHeaderWrapper = styled(motion.div)`
   flex-direction: column;
   width: 100%;
   top: 0;
-  overflow: hidden;
 
   h2 {
     font-size: 15rem;
