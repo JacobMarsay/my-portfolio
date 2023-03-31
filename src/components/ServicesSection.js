@@ -4,7 +4,6 @@ import {
   ScrollyHeaderWrapper,
 } from "../styles/sections/SideBySide";
 import { useParallax } from "../hooks/useParallax";
-import useScroll from "../hooks/useScroll";
 import { AnimateSharedLayout, motion } from "framer-motion";
 import styled from "styled-components";
 import {
