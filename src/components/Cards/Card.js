@@ -46,7 +46,13 @@ const CardContainer = styled.div`
 const CardContentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 2.5rem;
+  padding: 3rem;
+  background: #16191d;
+  color #d1d1d1;
+  h3{
+    color: #088f8f;
+    padding-bottom: 1rem
+  }
 `;
 
 const CardTitleContainer = styled.div``;

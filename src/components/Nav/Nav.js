@@ -5,26 +5,21 @@ import { motion } from "framer-motion";
 import { useScroll } from "../../hooks/scrollY";
 
 const Nav = () => {
-    const scrollY = useScroll();
-    const scrollThreshold = window.innerHeight * 0.1; // 10% of the page height
-    return(
-        <NavContainer
-        
-        initial="normal"
-        animate={scrollY > scrollThreshold ? 'shrink' : 'normal'}
-        variants={navMenuSize}>
-            <NavMenu />
-        </NavContainer>
-    )
-}
+  return (
+    <NavContainer>
+      <NavMenu />
+    </NavContainer>
+  );
+};
 
-const NavContainer = styled(motion.div) `
-    width: 100%;
-    background: #30303075;;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 2;
-`
+const NavContainer = styled(motion.div)`
+  width: 15%;
+  background: #111418;
+  position: fixed;
+  left: 0;
+  height: 100vh;
+  z-index: 2;
+  overflow-x: hidden;
+`;
 
 export default Nav;
