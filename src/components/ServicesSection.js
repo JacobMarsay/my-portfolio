@@ -1,34 +1,27 @@
 import React from "react";
 import {
   SectionContainerLight,
-  SideBySideContentContainer,
   ScrollyHeaderWrapper,
 } from "../styles/sections/SideBySide";
 import { useParallax } from "../hooks/useParallax";
 import useScroll from "../hooks/useScroll";
 import { AnimateSharedLayout, motion } from "framer-motion";
-import { fadeIn } from "../anims/animations";
 import styled from "styled-components";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
   faRocket,
   faPalette,
   faGear,
   faCube,
+  faBook,
+  faComment,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SectionHeadingContainer } from "../styles/global/Pages";
 
 const ServiceSection = () => {
-  const [element, controls] = useScroll();
   const rightOffset = useParallax(0.1, "right");
   return (
-    <SectionContainerLight
-      variants={fadeIn}
-      animate={controls}
-      ref={element}
-      initial="hidden"
-    >
+    <SectionContainerLight>
       <AnimateSharedLayout>
         <SectionHeadingContainer>
           <ScrollyHeaderWrapper
@@ -41,14 +34,49 @@ const ServiceSection = () => {
           <h3>What I Do</h3>
         </SectionHeadingContainer>
       </AnimateSharedLayout>
-      <IconBlockContainer>
-        <IconColumnContainer>
-          <IconRowContainer>
+      <FlexCenterContainer>
+        <FlexColumnContainer>
+          <FlexRowContainer>
+            <IconContainer>
+              <FontAwesomeIcon icon={faBook} size="4x" />
+            </IconContainer>
+            <IconContentContainer>
+              <h4>Learning & Development</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Pariatur aliquam ea a adipisci natus expedita iusto sunt hic
+                placeat possimus! Magni incidunt nostrum amet eveniet cum
+                molestias optio. Nemo, quidem?
+              </p>
+            </IconContentContainer>
+          </FlexRowContainer>
+        </FlexColumnContainer>
+        <FlexColumnContainer>
+          <FlexRowContainer>
+            <IconContainer>
+              <FontAwesomeIcon icon={faComment} size="4x" />
+            </IconContainer>
+
+            <IconContentContainer>
+              <h4>Risks & Requirements</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Pariatur aliquam ea a adipisci natus expedita iusto sunt hic
+                placeat possimus! Magni incidunt nostrum amet eveniet cum
+                molestias optio. Nemo, quidem?
+              </p>
+            </IconContentContainer>
+          </FlexRowContainer>
+        </FlexColumnContainer>
+      </FlexCenterContainer>
+      <FlexCenterContainer>
+        <FlexColumnContainer>
+          <FlexRowContainer>
             <IconContainer>
               <FontAwesomeIcon icon={faGear} size="4x" />
             </IconContainer>
             <IconContentContainer>
-              <h4>Testto</h4>
+              <h4>DevOps</h4>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Pariatur aliquam ea a adipisci natus expedita iusto sunt hic
@@ -56,15 +84,15 @@ const ServiceSection = () => {
                 molestias optio. Nemo, quidem?
               </p>
             </IconContentContainer>
-          </IconRowContainer>
-        </IconColumnContainer>
-        <IconColumnContainer>
-          <IconRowContainer>
+          </FlexRowContainer>
+        </FlexColumnContainer>
+        <FlexColumnContainer>
+          <FlexRowContainer>
             <IconContainer>
               <FontAwesomeIcon icon={faPalette} size="4x" />
             </IconContainer>
             <IconContentContainer>
-              <h4>Testto</h4>
+              <h4>Design</h4>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Pariatur aliquam ea a adipisci natus expedita iusto sunt hic
@@ -72,17 +100,17 @@ const ServiceSection = () => {
                 molestias optio. Nemo, quidem?
               </p>
             </IconContentContainer>
-          </IconRowContainer>
-        </IconColumnContainer>
-      </IconBlockContainer>
-      <IconBlockContainer>
-        <IconColumnContainer>
-          <IconRowContainer>
+          </FlexRowContainer>
+        </FlexColumnContainer>
+      </FlexCenterContainer>
+      <FlexCenterContainer>
+        <FlexColumnContainer>
+          <FlexRowContainer>
             <IconContainer>
               <FontAwesomeIcon icon={faCube} size="4x" />
             </IconContainer>
             <IconContentContainer>
-              <h4>Testto</h4>
+              <h4>Programming</h4>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Pariatur aliquam ea a adipisci natus expedita iusto sunt hic
@@ -90,16 +118,15 @@ const ServiceSection = () => {
                 molestias optio. Nemo, quidem?
               </p>
             </IconContentContainer>
-          </IconRowContainer>
-        </IconColumnContainer>
-        <IconColumnContainer>
-          <IconRowContainer>
+          </FlexRowContainer>
+        </FlexColumnContainer>
+        <FlexColumnContainer>
+          <FlexRowContainer>
             <IconContainer>
               <FontAwesomeIcon icon={faRocket} size="4x" />
             </IconContainer>
-
             <IconContentContainer>
-              <h4>Testto</h4>
+              <h4>Deployment</h4>
               <p>
                 Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Pariatur aliquam ea a adipisci natus expedita iusto sunt hic
@@ -107,27 +134,34 @@ const ServiceSection = () => {
                 molestias optio. Nemo, quidem?
               </p>
             </IconContentContainer>
-          </IconRowContainer>
-        </IconColumnContainer>
-      </IconBlockContainer>
+          </FlexRowContainer>
+        </FlexColumnContainer>
+      </FlexCenterContainer>
     </SectionContainerLight>
   );
 };
 export default ServiceSection;
 
-export const IconBlockContainer = styled.div`
+export const FlexCenterContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   width: 50%;
 `;
 
-export const IconColumnContainer = styled.div`
+export const FlexColumnContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 3rem 3rem;
+`;
+
+export const FlexRowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const IconContainer = styled.div`
@@ -138,13 +172,6 @@ export const IconContainer = styled.div`
   svg {
     color: #088f8f;
   }
-`;
-
-export const IconRowContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const IconContentContainer = styled.div`

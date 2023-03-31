@@ -10,7 +10,7 @@ import {
 //Import components
 import Card from "../components/Cards/Card";
 import HeroImage from "../components/HeroImage";
-import Hero from "../assets/code-hero-image.jpg";
+import Hero from "../assets/software-developer.jpg";
 import Nav from "../components/Nav/Nav";
 import TypedText from "../anims/TypedText";
 import CurvedLine from "../components/CurvedLine";
@@ -30,6 +30,7 @@ import { scaleSection } from "../anims/animations";
 import useScroll from "../hooks/useScroll";
 import { useParallax } from "../hooks/useParallax";
 import AboutMeSection from "../components/AboutMeSection";
+import ExperienceSection from "../components/ExperienceSection";
 
 const Dashboard = () => {
   const [element, controls] = useScroll();
@@ -74,12 +75,13 @@ const Dashboard = () => {
         </HeroContainer>
         <AboutMeSection />
         <ServiceSection />
+        <ExperienceSection />
         <SectionHeadingContainer>
           <ScrollyHeaderWrapper
             style={{ right: rightOffset }}
             direction="right"
           >
-            <motion.span>02</motion.span>
+            <motion.span>04</motion.span>
             <motion.h2>My Projects</motion.h2>
           </ScrollyHeaderWrapper>
         </SectionHeadingContainer>

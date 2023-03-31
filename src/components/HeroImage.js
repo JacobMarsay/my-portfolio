@@ -20,5 +20,6 @@ const HeroImageContainer = styled(motion.div)`
   height: 100vh;
   background-size: cover;
   background-position: center center;
+  opacity: 0.8;
 `;
 export default HeroImage;
