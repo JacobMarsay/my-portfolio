@@ -19,9 +19,10 @@ const NavMenu = () => {
       <MenuItemsContainer>
         <motion.ul>
           <li>01 About Me</li>
-          <li>02 What I Do</li>
-          <li>03 Projects</li>
-          <li>04 Contact</li>
+          <li>02 Services</li>
+          <li>03 Curriculum</li>
+          <li>04 My Projects</li>
+          <li>05 Contact</li>
         </motion.ul>
       </MenuItemsContainer>
       <SocialIconsContainer>
