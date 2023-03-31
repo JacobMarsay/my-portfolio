@@ -26,9 +26,9 @@ const NavMenu = () => {
         </motion.ul>
       </MenuItemsContainer>
       <SocialIconsContainer>
-        <FontAwesomeIcon icon={faGithub} size="4x" />
-        <FontAwesomeIcon icon={faEnvelope} size="4x" />
-        <FontAwesomeIcon icon={faLinkedin} size="4x" />
+        <FontAwesomeIcon icon={faGithub} size="3x" />
+        <FontAwesomeIcon icon={faEnvelope} size="3x" />
+        <FontAwesomeIcon icon={faLinkedin} size="3x" />
       </SocialIconsContainer>
     </NavMenuContainer>
   );
@@ -81,7 +81,8 @@ export const ProfilePictureLogo = styled.div`
   border: solid 0.5rem grey;
   border-radius: 100%;
   width: 100%;
-  height: 50%;
+  height: 0;
+  padding-top: 100%; /* use the same value as the width to create a circular aspect ratio */
 
   background-image: url(${AboutMe});
   background-size: cover;
