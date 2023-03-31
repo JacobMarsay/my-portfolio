@@ -26,9 +26,9 @@ const NavMenu = () => {
         </motion.ul>
       </MenuItemsContainer>
       <SocialIconsContainer>
-        <FontAwesomeIcon icon={faGithub} size="4x" />
-        <FontAwesomeIcon icon={faEnvelope} size="4x" />
-        <FontAwesomeIcon icon={faLinkedin} size="4x" />
+        <FontAwesomeIcon icon={faGithub} size="3x" />
+        <FontAwesomeIcon icon={faEnvelope} size="3x" />
+        <FontAwesomeIcon icon={faLinkedin} size="3x" />
       </SocialIconsContainer>
     </NavMenuContainer>
   );
