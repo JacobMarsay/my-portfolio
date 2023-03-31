@@ -1,7 +1,4 @@
-import {
-  SectionHeadingContainer,
-  ButtonLayoutElement,
-} from "../styles/global/Pages";
+import { SectionHeadingContainer } from "../styles/global/Pages";
 import {
   SectionContainer,
   SideBySideContentContainer,
@@ -10,23 +7,15 @@ import {
 import { useParallax } from "../hooks/useParallax";
 import useScroll from "../hooks/useScroll";
 import { AnimateSharedLayout, motion } from "framer-motion";
-import { fadeIn } from "../anims/animations";
 import styled from "styled-components";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { SocialIconsContainer } from "./Nav/NavMenu";
 
-
 const AboutMeSection = () => {
-  const [element, controls] = useScroll();
   const leftOffset = useParallax(0.1, "left");
   return (
-    <SectionContainer
-      variants={fadeIn}
-      animate={controls}
-      ref={element}
-      initial="hidden"
-    >
+    <SectionContainer>
       <AnimateSharedLayout>
         <SideBySideContentContainer>
           <SectionHeadingContainer>
