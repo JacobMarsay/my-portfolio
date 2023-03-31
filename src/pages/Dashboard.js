@@ -23,21 +23,19 @@ import {
   SectionHeadingContainer,
 } from "../styles/global/Pages";
 import { ScrollyHeaderWrapper } from "../styles/sections/SideBySide";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectData } from "../util/project-util";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { scaleSection } from "../anims/animations";
 import useScroll from "../hooks/useScroll";
 import { useParallax } from "../hooks/useParallax";
 import AboutMeSection from "../components/AboutMeSection";
+import ProjectSection from "../components/ProjectSection";
 import ExperienceSection from "../components/ExperienceSection";
+import ContactSection from "../components/ContactSection";
 
 const Dashboard = () => {
   const [element, controls] = useScroll();
 
   const rightOffset = useParallax(0.1, "right");
-
-  const projectInfo = ProjectData();
   const heroAnimation = useAnimation();
 
   const animateHero = async () => {
@@ -76,33 +74,8 @@ const Dashboard = () => {
         <AboutMeSection />
         <ServiceSection />
         <ExperienceSection />
-        <SectionHeadingContainer>
-          <ScrollyHeaderWrapper
-            style={{ right: rightOffset }}
-            direction="right"
-          >
-            <motion.span>04</motion.span>
-            <motion.h2>My Projects</motion.h2>
-          </ScrollyHeaderWrapper>
-        </SectionHeadingContainer>
-        <CardsContainer
-          variants={scaleSection}
-          animate={controls}
-          ref={element}
-          initial="hidden"
-        >
-          <AnimateSharedLayout>
-            {projectInfo.map((project) => (
-              <Card
-                key={project.id}
-                id={project.id}
-                image={project.image.CardPlaceHolderImg}
-                title={project.title}
-                description={project.description}
-              />
-            ))}
-          </AnimateSharedLayout>
-        </CardsContainer>
+        <ProjectSection />
+        <ContactSection />
       </PageContentContainer>
     </PageContainer>
   );
