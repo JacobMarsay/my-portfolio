@@ -148,7 +148,7 @@ export const ExperianceWrapper = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
 `;
 
 export const ExperianceYearContainer = styled.div`

@@ -31,6 +31,7 @@ import {
 const SubSectionHeadingContainer = styled(SectionHeadingContainer)`
   align-items: flex-start;
   justify-content: flex-start;
+  height: 40vh;
 `;
 
 const TechnologyIconContainer = styled(IconContainer)`
