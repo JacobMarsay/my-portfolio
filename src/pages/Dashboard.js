@@ -4,11 +4,12 @@ import {
   motion,
   useAnimation,
   AnimateSharedLayout,
-  useViewportScroll,
+  AnimatePresence,
 } from "framer-motion";
 
+import { fadeUp, pageAnimation, scaleSection } from "../anims/animations";
+
 //Import components
-import Card from "../components/Cards/Card";
 import HeroImage from "../components/HeroImage";
 import Hero from "../assets/software-developer.jpg";
 import Nav from "../components/Nav/Nav";
@@ -17,27 +18,24 @@ import CurvedLine from "../components/CurvedLine";
 import ServiceSection from "../components/ServicesSection";
 
 //import global styles
-import {
-  PageContainer,
-  PageContentContainer,
-  SectionHeadingContainer,
-} from "../styles/global/Pages";
-import { ScrollyHeaderWrapper } from "../styles/sections/SideBySide";
-import { ProjectData } from "../util/project-util";
-import { scaleSection } from "../anims/animations";
-import useScroll from "../hooks/useScroll";
-import { useParallax } from "../hooks/useParallax";
+import { PageContentContainer } from "../styles/global/Pages";
 import AboutMeSection from "../components/AboutMeSection";
 import ProjectSection from "../components/ProjectSection";
 import ExperienceSection from "../components/ExperienceSection";
 import ContactSection from "../components/ContactSection";
+import Splash from "../components/Splash";
+import useScroll from "../hooks/useScroll";
 
 const Dashboard = () => {
-  const [element, controls] = useScroll();
-
-  const rightOffset = useParallax(0.1, "right");
   const heroAnimation = useAnimation();
+  const [showComponent, setShowComponent] = useState(true);
 
+  const PageContainer = styled(motion.div)`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  `;
   const animateHero = async () => {
     await heroAnimation.start({
       opacity: 1,
@@ -47,37 +45,58 @@ const Dashboard = () => {
       },
     });
   };
-
   animateHero();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowComponent(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <PageContainer>
-      <Nav />
-      <PageContentContainer>
-        <HeroContainer>
-          <HeroImage heroImage={Hero} />
-          <HeroOverlay animate={heroAnimation}>
-            <HeroHeadingContainer>
-              <motion.h1
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ duration: 2 }}
-              >
-                <TypedText text="A Fullstack Developer with Passion For Modern Web Apps and Design." />
-              </motion.h1>
-              <UnderlineContainer>
-                <CurvedLine />
-              </UnderlineContainer>
-            </HeroHeadingContainer>
-          </HeroOverlay>
-        </HeroContainer>
-        <AboutMeSection />
-        <ServiceSection />
-        <ExperienceSection />
-        <ProjectSection />
-        <ContactSection />
-      </PageContentContainer>
-    </PageContainer>
+    <>
+      {showComponent ? (
+        <Splash />
+      ) : (
+        <PageContainer
+          exit="exit"
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+        >
+          <AnimateSharedLayout>
+            <Nav />
+            <PageContentContainer>
+              <HeroContainer>
+                <HeroImage heroImage={Hero} />
+                <HeroOverlay animate={heroAnimation}>
+                  <HeroHeadingContainer>
+                    <motion.h1
+                      initial={{ opacity: 0, y: -20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 2 }}
+                    >
+                      <TypedText text="A Fullstack Developer with Passion For Modern Web Apps and Design." />
+                    </motion.h1>
+                    <UnderlineContainer>
+                      <CurvedLine />
+                    </UnderlineContainer>
+                  </HeroHeadingContainer>
+                </HeroOverlay>
+              </HeroContainer>
+              <AboutMeSection />
+              <ServiceSection />
+              <ExperienceSection />
+              <ProjectSection />
+              <ContactSection />
+            </PageContentContainer>
+          </AnimateSharedLayout>
+        </PageContainer>
+      )}
+    </>
   );
 };
 
