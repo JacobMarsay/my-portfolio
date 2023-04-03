@@ -24,6 +24,7 @@ import ProjectSection from "../components/ProjectSection";
 import ExperienceSection from "../components/ExperienceSection";
 import ContactSection from "../components/ContactSection";
 import Splash from "../components/Splash";
+import Footer from "../components/Footer/Footer";
 
 const Dashboard = () => {
   const heroAnimation = useAnimation();
@@ -93,6 +94,7 @@ const Dashboard = () => {
               <ContactSection />
             </PageContentContainer>
           </AnimateSharedLayout>
+          <Footer />
         </PageContainer>
       )}
     </>
