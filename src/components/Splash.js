@@ -3,9 +3,9 @@ import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { useRef, useLayoutEffect } from "react";
 import { degreesToRadians, progress, mix } from "popmotion";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+
 import { fadeUp, scaleSection, zoomOut } from "../anims/animations";
-import { AnimateSharedLayout } from "framer-motion";
+import { AnimateSharedLayout, motion } from "framer-motion";
 
 const SplashContainer = styled(motion.div)`
   position: fixed;
