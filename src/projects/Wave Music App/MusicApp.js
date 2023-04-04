@@ -6,12 +6,14 @@ import Song from "./components/Song";
 import Player from "./components/Player";
 import Library from "./components/Library";
 import { useRef } from "react";
+import Cursor from "../../components/Cursor";
 
 const MusicApp = () => {
   const audioRef = useRef();
 
   return (
     <AppContainer>
+      <Cursor />
       <Nav />
       <Song />
       <Player audioRef={audioRef} />

@@ -25,6 +25,7 @@ import ExperienceSection from "../components/ExperienceSection";
 import ContactSection from "../components/ContactSection";
 import Splash from "../components/Splash";
 import Footer from "../components/Footer/Footer";
+import Cursor from "../components/Cursor";
 
 const Dashboard = () => {
   const heroAnimation = useAnimation();
@@ -57,6 +58,7 @@ const Dashboard = () => {
 
   return (
     <>
+      <Cursor />
       {showComponent ? (
         <Splash />
       ) : (
@@ -93,8 +95,8 @@ const Dashboard = () => {
               <ProjectSection />
               <ContactSection />
             </PageContentContainer>
+            <Footer />
           </AnimateSharedLayout>
-          <Footer />
         </PageContainer>
       )}
     </>
