@@ -1,6 +1,4 @@
 import React from "react";
-import { SectionContainer } from "../styles/sections/SideBySide";
-import { SectionHeadingContainer } from "../styles/global/Pages";
 import {
   FlexCenterContainer,
   FlexColumnContainer,
