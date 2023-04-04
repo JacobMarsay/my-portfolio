@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from 'react-scroll';
 
 const FooterItemsContainer = styled.div`
   display: flex;
@@ -31,6 +32,12 @@ const FooterItemsContainer = styled.div`
     li {
       list-style: none;
       font-family: "Oswald";
+      a{
+        color: #fff;
+        &:hover{
+          color: #088f8f;
+        }
+      }
     }
   }
 `;
@@ -45,11 +52,21 @@ const FooterItems = () => {
       </FooterItemsContainer>
       <FooterItemsContainer>
         <ul>
-          <li>01 About Me</li>
-          <li>02 Services</li>
-          <li>03 Curriculum</li>
-          <li>04 My Projects</li>
-          <li>05 Contact</li>
+          <li>
+            <Link to="about-me" smooth={true} offset={0}>01 About Me</Link>
+          </li>
+          <li>
+            <Link to="services" smooth={true} offset={0}>02 Services</Link>
+          </li>
+          <li>
+            <Link to="curriculum" smooth={true} offset={0}>03 Curriculum</Link>
+          </li>
+          <li>
+            <Link to="my-projects" smooth={true} offset={0}>04 My Projects</Link>
+          </li>
+          <li>
+            <Link to="contact" smooth={true} offset={0}>05 Contact</Link>
+          </li>
         </ul>
       </FooterItemsContainer>
     </>

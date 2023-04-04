@@ -45,6 +45,7 @@ const ExperienceSection = () => {
   const leftOffset = useParallax(0.1, "left");
   return (
     <SectionContainer
+      id="curriculum"
       variants={fadeIn}
       animate={controls}
       ref={element}

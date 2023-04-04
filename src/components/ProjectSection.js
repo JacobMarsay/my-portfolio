@@ -34,7 +34,7 @@ const ProjectSection = () => {
   const rightOffset = useParallax(0.05, "right");
   const projectInfo = ProjectData();
   return (
-    <SectionContainerLight>
+    <SectionContainerLight id="my-projects">
       <SectionHeadingContainer>
         <ScrollyHeaderWrapper style={{ right: rightOffset }} direction="right">
           <motion.span style={{ color: "#16191d" }}>04</motion.span>

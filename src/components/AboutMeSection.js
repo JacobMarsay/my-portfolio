@@ -15,7 +15,7 @@ import { SocialIconsContainer } from "./Nav/NavMenu";
 const AboutMeSection = () => {
   const leftOffset = useParallax(0.1, "left");
   return (
-    <SectionContainer>
+    <SectionContainer id="about-me">
       <AnimateSharedLayout>
         <SideBySideContentContainer>
           <SectionHeadingContainer>
