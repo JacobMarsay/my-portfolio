@@ -37,16 +37,19 @@ const Dashboard = () => {
     flex-wrap: wrap;
     width: 100%;
   `;
-  const animateHero = async () => {
-    await heroAnimation.start({
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        ease: "easeInOut",
-      },
-    });
-  };
-  animateHero();
+
+  useEffect(() => {
+    const animateHero = async () => {
+      await heroAnimation.start({
+        opacity: 1,
+        transition: {
+          duration: 0.5,
+          ease: "easeInOut",
+        },
+      });
+    };
+    animateHero();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
