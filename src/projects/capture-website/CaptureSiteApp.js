@@ -7,7 +7,7 @@ import Nav from "./components/Nav";
 import GlobalStyle from "./styles/base/GlobalStyle";
 import { AnimatePresence } from "framer-motion";
 import TopPage from "./components/TopPage";
-
+import Cursor from "../../components/Cursor";
 //Router
 import { Routes, Route, useLocation } from "react-router-dom";
 
@@ -15,6 +15,7 @@ const CaptureSite = () => {
   const location = useLocation();
   return (
     <div className="App">
+      <Cursor />
       <GlobalStyle />
       <Nav />
       <TopPage />
