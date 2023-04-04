@@ -40,7 +40,7 @@ const FooterItems = () => {
     <>
       <FooterItemsContainer>
         <p>
-          Copyright &copy 2023 <span>Jacob Marsay</span>. All Rights Resevered.
+          Copyright &copy; 2023 <span>Jacob Marsay</span>. All Rights Resevered.
         </p>
       </FooterItemsContainer>
       <FooterItemsContainer>
