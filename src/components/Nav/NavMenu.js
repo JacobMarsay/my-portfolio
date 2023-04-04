@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useScroll } from "../../hooks/scrollY";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import AboutMe from "../../assets/jacob.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from 'react-scroll';
+
 
 const NavMenu = () => {
   return (
@@ -15,11 +16,21 @@ const NavMenu = () => {
       </ProfilePictureContainer>
       <MenuItemsContainer>
         <motion.ul>
-          <li>01 About Me</li>
-          <li>02 Services</li>
-          <li>03 Curriculum</li>
-          <li>04 My Projects</li>
-          <li>05 Contact</li>
+          <li>
+            <Link to="about-me" smooth={true} offset={0}>01 About Me</Link>
+          </li>
+          <li>
+            <Link to="services" smooth={true} offset={0}>02 Services</Link>
+          </li>
+          <li>
+            <Link to="curriculum" smooth={true} offset={0}>03 Curriculum</Link>
+          </li>
+          <li>
+            <Link to="my-projects" smooth={true} offset={0}>04 My Projects</Link>
+          </li>
+          <li>
+            <Link to="contact" smooth={true} offset={0}>05 Contact</Link>
+          </li>
         </motion.ul>
       </MenuItemsContainer>
       <SocialIconsContainer>
@@ -70,6 +81,13 @@ const MenuItemsContainer = styled(motion.div)`
     li {
       padding: 1.5rem;
       font-size: 2.5rem;
+
+      a{
+        color: #fff;
+        &:hover{
+          color: #088f8f;
+        }
+      }
     }
   }
 `;
