@@ -20,7 +20,7 @@ import { SectionHeadingContainer } from "../styles/global/Pages";
 const ServiceSection = () => {
   const rightOffset = useParallax(0.1, "right");
   return (
-    <SectionContainerLight>
+    <SectionContainerLight id="services">
       <AnimateSharedLayout>
         <SectionHeadingContainer>
           <ScrollyHeaderWrapper
