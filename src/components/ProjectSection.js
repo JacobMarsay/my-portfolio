@@ -2,22 +2,14 @@
 import Card from "../components/Cards/Card";
 
 //import global styles
-import {
-  PageContainer,
-  PageContentContainer,
-  SectionHeadingContainer,
-} from "../styles/global/Pages";
-
+import { SectionHeadingContainer } from "../styles/global/Pages";
 import { SectionContainerLight } from "../styles/sections/SideBySide";
 import { FlexCenterContainer } from "./ServicesSection";
 import { ScrollyHeaderWrapper } from "../styles/sections/SideBySide";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ProjectData } from "../util/project-util";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { scaleSection } from "../anims/animations";
 import useScroll from "../hooks/useScroll";
 import { useParallax } from "../hooks/useParallax";
-import AboutMeSection from "../components/AboutMeSection";
 import { CardsContainer } from "../pages/Dashboard";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import styled from "styled-components";
