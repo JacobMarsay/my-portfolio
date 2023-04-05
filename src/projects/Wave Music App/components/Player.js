@@ -10,7 +10,7 @@ import {
   skipTrackBackward,
   songEnded,
   activeLibrary,
-} from "../redux/slices/musicSlice";
+} from "../redux/slice/musicSlice";
 import {
   faPlayCircle,
   faAngleLeft,

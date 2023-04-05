@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 
-import { toggleLibrary } from "../redux/slices/musicSlice";
+import { toggleLibrary } from "../redux/slice/musicSlice";
 
 const Nav = () => {
   const dispatch = useDispatch();

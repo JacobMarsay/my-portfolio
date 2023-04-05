@@ -10,12 +10,14 @@ import TopPage from "./components/TopPage";
 import Cursor from "../../components/Cursor";
 //Router
 import { Routes, Route, useLocation } from "react-router-dom";
+import HomeButton from "../../components/HomeButton";
 
 const CaptureSite = () => {
   const location = useLocation();
   return (
     <div className="App">
       <Cursor />
+      <HomeButton />
       <GlobalStyle />
       <Nav />
       <TopPage />
