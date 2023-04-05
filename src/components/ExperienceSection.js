@@ -42,7 +42,7 @@ const FlexExperienceContainer = styled(FlexCenterContainer)`
 
 const ExperienceSection = () => {
   const [element, controls] = useScroll();
-  const leftOffset = useParallax(0.1, "left");
+  const leftOffset = useParallax(0.03, "left");
   return (
     <SectionContainer
       id="curriculum"

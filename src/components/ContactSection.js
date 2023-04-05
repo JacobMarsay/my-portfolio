@@ -12,7 +12,7 @@ import {
 } from "./AboutMeSection";
 
 const ContactSection = () => {
-  const leftOffset = useParallax(0.1, "left");
+  const leftOffset = useParallax(0.04, "left");
   return (
     <SectionContainer id="contact">
       <AnimateSharedLayout>
