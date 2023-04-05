@@ -12,6 +12,11 @@ export const PageContentContainer = styled.div`
   flex-grow: 1;
   margin-left: 15%;
   overflow-x: hidden;
+  @media (max-width: 1250px) {
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+  }
 `;
 
 export const SectionHeadingContainer = styled.div`
