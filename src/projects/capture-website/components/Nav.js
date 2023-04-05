@@ -9,33 +9,33 @@ function Nav() {
   return (
     <NavContainer>
       <h1>
-        <Link id="logo" to="/projects/Photography%20&%20Movies%20website/2">
+        <Link id="logo" to="/projects/Photography%20Website/2">
           Capture
         </Link>
       </h1>
       <ul>
         <li>
-          <Link to="/projects/Photography%20&%20Movies%20website/2">1. About Us</Link>
+          <Link to="/projects/Photography%20Website/2">1. About Us</Link>
           <ActiveLinkAnim
             initial={{ width: "0%" }}
             transition={{ duration: 0.75 }}
-            animate={{ width: pathname === "/projects/Photography%20&%20Movies%20website/2" ? "50%" : "0%" }}
+            animate={{ width: pathname === "/projects/Photography%20Website/2" ? "50%" : "0%" }}
           />
         </li>
         <li>
-          <Link to="/projects/Photography%20&%20Movies%20website/2/work">2. Our Work</Link>
+          <Link to="/projects/Photography%20Website/2/work">2. Our Work</Link>
           <ActiveLinkAnim
             initial={{ width: "0%" }}
             transition={{ duration: 0.75 }}
-            animate={{ width: pathname === "/projects/Photography%20&%20Movies%20website/2/work" ? "50%" : "0%" }}
+            animate={{ width: pathname === "/projects/Photography%20Website/2/work" ? "50%" : "0%" }}
           />
         </li>
         <li>
-          <Link to="/projects/Photography%20&%20Movies%20website/2/contact">3. Contact Us</Link>
+          <Link to="/projects/Photography%20Website/2/contact">3. Contact Us</Link>
           <ActiveLinkAnim
             initial={{ width: "0%" }}
             transition={{ duration: 0.75 }}
-            animate={{ width: pathname === "/projects/Photography%20&%20Movies%20website/2/contact" ? "50%" : "0%" }}
+            animate={{ width: pathname === "/projects/Photography%20Website/2/contact" ? "50%" : "0%" }}
           />
         </li>
       </ul>
