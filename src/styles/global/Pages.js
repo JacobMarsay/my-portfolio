@@ -33,9 +33,9 @@ export const SectionHeadingContainer = styled.div`
     color: #d1d1d1;
   }
 
-  @media(min-width: 280px) and (max-width: 1250px){
+  @media (max-width: 1250px){
     h3{
-      font-size: 2rem;
+      font-size: 3rem;
     }
   }
 `;

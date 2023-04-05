@@ -146,6 +146,10 @@ export const FlexCenterContainer = styled.div`
   align-items: center;
   justify-content: center;
   width: 80%;
+  @media (max-width: 950px) {
+    flex-direction: column;
+    width:95%
+  }
 `;
 
 export const FlexColumnContainer = styled.div`
@@ -185,5 +189,10 @@ export const IconContentContainer = styled.div`
   h4 {
     font-size: 3rem;
     padding-bottom: 1rem;
+  }
+  @media (max-width: 1250px){
+    h4{
+      font-size: 2.5rem;
+    }
   }
 `;
