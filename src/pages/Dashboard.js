@@ -1,13 +1,13 @@
-import { React, useState, useEffect } from "react";
+import { React, useEffect } from "react";
 import styled from "styled-components";
 import {
   motion,
   useAnimation,
   AnimateSharedLayout,
-  AnimatePresence,
 } from "framer-motion";
+import { useSelector, useDispatch } from "react-redux";
 
-import { fadeUp, pageAnimation, scaleSection } from "../anims/animations";
+import { pageAnimation} from "../anims/animations";
 
 //Import components
 import HeroImage from "../components/HeroImage";
@@ -16,6 +16,7 @@ import Nav from "../components/Nav/Nav";
 import TypedText from "../anims/TypedText";
 import CurvedLine from "../components/CurvedLine";
 import ServiceSection from "../components/ServicesSection";
+import { showSplash } from "../store/slice/SplashSlice";
 
 //import global styles
 import { PageContentContainer } from "../styles/global/Pages";
@@ -27,9 +28,11 @@ import Splash from "../components/Splash";
 import Footer from "../components/Footer/Footer";
 import Cursor from "../components/Cursor";
 
+
 const Dashboard = () => {
+  const dispatch = useDispatch();
+  const firstLoad = useSelector((state) => state.splash.firstLoad);
   const heroAnimation = useAnimation();
-  const [showComponent, setShowComponent] = useState(true);
 
   const PageContainer = styled(motion.div)`
     display: flex;
@@ -53,8 +56,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowComponent(false);
-    }, 10000);
+      dispatch(showSplash())
+    }, 5000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -62,7 +65,7 @@ const Dashboard = () => {
   return (
     <>
       <Cursor />
-      {showComponent ? (
+      {firstLoad ? (
         <Splash />
       ) : (
         <PageContainer

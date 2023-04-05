@@ -89,7 +89,7 @@ const Splash = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setZoomedIn(true);
-    }, 9700); // 9.7 seconds
+    }, 4700); // 4.7 seconds
 
     return () => clearTimeout(timer);
   }, []);
