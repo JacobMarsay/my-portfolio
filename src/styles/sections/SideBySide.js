@@ -45,4 +45,27 @@ export const ScrollyHeaderWrapper = styled(motion.div)`
       direction === "left" ? "translateX(-20%)" : "translateX(10%)"};
     padding: 0;
   }
+  @media(min-width: 600px) and (max-width: 1250px){
+    align-items: center;
+
+    h2{
+      font-size: 8rem;
+      line-height: 8rem;
+    }
+  }
+    span{
+      font-size: 3.5rem;
+    }
+
+    @media(min-width: 280px) and (max-width: 569px){
+    align-items: center;
+
+    h2{
+      font-size: 6rem;
+      line-height: 6rem;
+    }
+  }
+    span{
+      font-size: 2.5rem;
+    }
 `;

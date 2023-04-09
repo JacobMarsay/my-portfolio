@@ -88,11 +88,16 @@ export const FormElement = styled.form`
     width: 41%;
     margin: 2rem;
     height: 3rem;
+
+    @media (max-width: 750px) {
+      width: 100%;
+    }
   }
   textarea {
     width: 90%;
     margin: 0rem 3rem 2rem 2rem;
   }
+
 `;
 export const CenteredFormButtonContainer = styled.div`
   display: flex;
@@ -110,6 +115,7 @@ export const CenteredFormButtonContainer = styled.div`
     background: #16191d;
     font-family: "Poppins";
     color: #d1d1d1;
+    text-align: center;
     &:hover {
       border: solid 2px #088f8f;
       background: #088f8f;
@@ -117,6 +123,9 @@ export const CenteredFormButtonContainer = styled.div`
     }
     &:focus {
       outline: #088f8f;
+    }
+    @media (max-width: 750px) {
+      width: 90%;
     }
   }
 `;

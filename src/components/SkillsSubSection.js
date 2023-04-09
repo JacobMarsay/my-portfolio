@@ -49,12 +49,19 @@ const TechnologyCardContainer = styled.div`
   }
 `;
 
+const TechnologyRowContainer = styled(FlexRowContainer)`
+  flex-wrap: wrap;
+  @media(max-width:900px){
+
+  }
+`
+
 const SkillsSubSection = () => {
   return (
     <SubSectionContainer>
       <FlexColumnContainer>
         <h3>Technologies</h3>
-        <FlexRowContainer>
+        <TechnologyRowContainer>
           <TechnologyCardContainer>
             <TechnologyIconContainer>
               <FontAwesomeIcon icon={faLaravel} size="4x" />
@@ -87,8 +94,6 @@ const SkillsSubSection = () => {
               <h5>Java Script</h5>
             </IconContentContainer>
           </TechnologyCardContainer>
-        </FlexRowContainer>
-        <FlexRowContainer>
           <TechnologyCardContainer>
             <TechnologyIconContainer>
               <FontAwesomeIcon icon={faReact} size="4x" />
@@ -121,7 +126,7 @@ const SkillsSubSection = () => {
               <h5>Sass</h5>
             </IconContentContainer>
           </TechnologyCardContainer>
-        </FlexRowContainer>
+        </TechnologyRowContainer>
       </FlexColumnContainer>
     </SubSectionContainer>
   );

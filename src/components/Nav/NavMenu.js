@@ -6,8 +6,7 @@ import AboutMe from "../../assets/jacob.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-scroll';
 
-
-const NavMenu = () => {
+const NavMenu = ({setIsOpen}) => {
   return (
     <NavMenuContainer>
       <ProfilePictureContainer>
@@ -17,19 +16,19 @@ const NavMenu = () => {
       <MenuItemsContainer>
         <motion.ul>
           <li>
-            <Link to="about-me" smooth={true} offset={0}>01 About Me</Link>
+            <Link to="about-me" onClick={()=> {setIsOpen(false)}} smooth={true} offset={0}>01 About Me</Link>
           </li>
           <li>
-            <Link to="services" smooth={true} offset={0}>02 Services</Link>
+            <Link to="services" onClick={()=> {setIsOpen(false)}} smooth={true} offset={0}>02 Services</Link>
           </li>
           <li>
-            <Link to="curriculum" smooth={true} offset={0}>03 Curriculum</Link>
+            <Link to="curriculum" onClick={()=> {setIsOpen(false)}} smooth={true} offset={0}>03 Curriculum</Link>
           </li>
           <li>
-            <Link to="my-projects" smooth={true} offset={0}>04 My Projects</Link>
+            <Link to="my-projects" onClick={()=> {setIsOpen(false)}} smooth={true} offset={0}>04 My Projects</Link>
           </li>
           <li>
-            <Link to="contact" smooth={true} offset={0}>05 Contact</Link>
+            <Link to="contact" onClick={()=> {setIsOpen(false)}} smooth={true} offset={0}>05 Contact</Link>
           </li>
         </motion.ul>
       </MenuItemsContainer>

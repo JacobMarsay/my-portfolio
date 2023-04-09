@@ -5,6 +5,8 @@
 }
 html {
   font-size: 62.5%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -13,6 +15,8 @@ body {
     "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 code {
@@ -21,13 +25,12 @@ code {
 }
 
 h1,
-h2 {
+h2,
+h3{
   font-size: 3rem;
+  
 }
 
-h3 {
-  font-size: 3rem;
-}
 
 h4,
 p {

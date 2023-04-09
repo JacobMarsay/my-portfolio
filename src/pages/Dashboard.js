@@ -89,9 +89,6 @@ const Dashboard = () => {
                     >
                       <TypedText text="A Fullstack Developer with Passion For Modern Web Apps and Design." />
                     </motion.h1>
-                    <UnderlineContainer>
-                      <CurvedLine />
-                    </UnderlineContainer>
                   </HeroHeadingContainer>
                 </HeroOverlay>
               </HeroContainer>
@@ -117,6 +114,9 @@ export const CardsContainer = styled(motion.div)`
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  @media (max-width: 600px){
+    flex-direction: column;
+  }
 `;
 
 export const HeroContainer = styled(motion.div)`
@@ -138,6 +138,21 @@ export const HeroHeadingContainer = styled(motion.div)`
     font-size: 8rem;
     line-height: 8rem;
   }
+  @media(min-width:600px) and (max-width:1250px){
+      h1{
+        font-size: 6rem;
+        line-height: 6rem;
+        white-space: normal;
+      }
+    }
+
+    @media(min-width:280px) and (max-width:600px){
+      h1{
+        font-size: 3rem;
+        line-height: 3rem;
+        white-space: normal;
+      }
+    }
 `;
 
 export const ScrollWrapper = styled(motion.div)`
@@ -165,10 +180,4 @@ export const HeroOverlay = styled(motion.div)`
     rgba(0, 0, 0, 0.4) 0%,
     rgba(0, 0, 0, 0.7) 100%
   );
-`;
-
-export const UnderlineContainer = styled.div`
-  position: absolute;
-  bottom: -400px;
-  left: 0px;
 `;

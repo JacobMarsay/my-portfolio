@@ -10,7 +10,7 @@ export const ProjectData = () => {
     },
     {
       id: 2,
-      title: "Photography & Movies website",
+      title: "Photography Website",
       description:
         "A website based around photography and movies. Containts funky animations and screen rendering!",
       image: { CardPlaceHolderImg },

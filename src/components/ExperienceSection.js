@@ -36,6 +36,12 @@ const FlexColumnContainerExperience = styled(FlexColumnContainer)`
   }
 `;
 
+const ExperienceCardRowContainer = styled(FlexRowContainer)`
+  @media(max-width: 1225px){
+    flex-direction: column;
+  }
+`
+
 const FlexExperienceContainer = styled(FlexCenterContainer)`
   width: 100%;
 `;
@@ -62,7 +68,7 @@ const ExperienceSection = () => {
       </AnimateSharedLayout>
       <ExperianceWrapper>
         <FlexExperienceContainer>
-          <FlexRowContainer>
+          <ExperienceCardRowContainer>
             <FlexColumnContainerExperience>
               <ExperianceYearContainer>
                 <p>2018-2022</p>
@@ -97,10 +103,10 @@ const ExperienceSection = () => {
                 tempora cum excepturi dolore quam!
               </p>
             </FlexColumnContainerExperience>
-          </FlexRowContainer>
+          </ExperienceCardRowContainer>
         </FlexExperienceContainer>
         <FlexExperienceContainer>
-          <FlexRowContainer>
+          <ExperienceCardRowContainer>
             <FlexColumnContainerExperience>
               <ExperianceYearContainer>
                 <p>2017-2018</p>
@@ -135,7 +141,7 @@ const ExperienceSection = () => {
                 tempora cum excepturi dolore quam!
               </p>
             </FlexColumnContainerExperience>
-          </FlexRowContainer>
+          </ExperienceCardRowContainer>
         </FlexExperienceContainer>
         <SkillsSubSection />
       </ExperianceWrapper>

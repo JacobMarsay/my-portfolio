@@ -13,6 +13,9 @@ export const CustomCursorContainer = styled.div`
   transform: translate(calc(-50% + 15px), -50%);
   z-index: 9998;
   opacity: 0.3;
+  /* @media (max-width: 1250px) {
+    display:none;
+  } */
 `;
 
 export const CustomCursorTracker = styled.div`
@@ -25,4 +28,7 @@ export const CustomCursorTracker = styled.div`
   pointer-events: none;
   transition: width 0.3s, height 0.3s;
   z-index: 9999;
+  /* @media (max-width: 1250px) {
+    display:none;
+  } */
 `;

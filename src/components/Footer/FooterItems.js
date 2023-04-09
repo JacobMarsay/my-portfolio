@@ -7,6 +7,10 @@ const FooterItemsContainer = styled.div`
   justify-content: center;
   width: 100%;
 
+  p{
+    margin-left: 20rem;
+  }
+
   span {
     color: #088f8f;
   }
@@ -29,6 +33,7 @@ const FooterItemsContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
     li {
       list-style: none;
       font-family: "Oswald";
@@ -38,6 +43,21 @@ const FooterItemsContainer = styled.div`
           color: #088f8f;
         }
       }
+    }
+
+    @media(max-width:563px) {
+      flex-direction: column;
+      li{
+        border: none;
+        padding: 0.5rem;
+      }
+    }
+  }
+
+  @media (max-width: 1250px) {
+    p {
+      margin: 2rem 0rem 0rem 0rem;
+      text-align: center;
     }
   }
 `;

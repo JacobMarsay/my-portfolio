@@ -86,6 +86,10 @@ export const CenteredSectionDescription = styled.div`
   span {
     color: #088f8f;
   }
+  @media (max-width: 600px) {
+    width:100%;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const CenteredSectionDescriptionWrapper = styled.div`
@@ -93,12 +97,21 @@ export const CenteredSectionDescriptionWrapper = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    width:100%
+  }
 `;
 
 export const InfoTableContainerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   color: #d1d1d1;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    width:80%
+  }
 `;
 
 export const InfoTableContainer = styled.div`

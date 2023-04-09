@@ -14,6 +14,7 @@ import HomeButton from "../../components/HomeButton";
 
 const CaptureSite = () => {
   const location = useLocation();
+  console.log(location.pathname);
   return (
     <div className="App">
       <Cursor />
