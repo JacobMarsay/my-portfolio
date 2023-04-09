@@ -41,6 +41,9 @@ const CardContainer = styled.div`
   :hover {
     cursor: pointer;
   }
+  @media (max-width: 850px){
+    width: 90%;
+  }
 `;
 
 const CardContentContainer = styled.div`
@@ -48,7 +51,7 @@ const CardContentContainer = styled.div`
   flex-direction: column;
   padding: 3rem;
   background: #16191d;
-  color #d1d1d1;
+  color: #d1d1d1;
   h3{
     color: #088f8f;
     padding-bottom: 1rem

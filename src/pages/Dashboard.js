@@ -114,6 +114,9 @@ export const CardsContainer = styled(motion.div)`
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
+  @media (max-width: 600px){
+    flex-direction: column;
+  }
 `;
 
 export const HeroContainer = styled(motion.div)`

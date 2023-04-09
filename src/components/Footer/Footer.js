@@ -6,6 +6,11 @@ const FooterContainer = styled.div`
   background: #111418;
   padding: 5rem 0rem;
   width: 100%;
+
+  @media(max-width:1125px){
+    flex-direction: column-reverse;
+    
+  }
 `;
 
 const Footer = () => {
